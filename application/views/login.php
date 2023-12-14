@@ -13,7 +13,7 @@
             </section>
         </div>
         <div class="content">
-            <p class="home" ><a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">X</a></p>
+            <p class="home" ><a href="<?php echo base_url('cawal/tampilawal'); ?>">X</a></p>
             <form action="<?php echo base_url('clogin/proseslogin'); ?>" name="formlogin" id="formlogin" method="post">
                 <section class="copy">
                     <h2>Sign In</h2>

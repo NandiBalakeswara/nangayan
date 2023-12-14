@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;700&family=Playfair+Display:wght@400;700&family=Roboto+Slab:wght@200;300;400&display=swap');
-body{
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&family=Playfair+Display:wght@400;700&family=Roboto+Slab:wght@200;300;400&display=swap');body{
     margin: 0;
     padding: 0;
 }
@@ -215,6 +214,25 @@ a{
     background-color: #E0B973;
 }
 
+/* Header pada halaman status */
+.status{
+    background-color: #E0B973;
+    text-align: center;
+    padding: 5px;
+    color: #14274A;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+header h1{
+    margin: 0;
+    padding: 5px;
+}
+
+header h2{
+    margin: 0;
+    padding: 5px;
+}
+
 main{
     padding: 20px 5%;
     display: flex;
@@ -229,12 +247,21 @@ main{
     flex-flow: column nowrap;
     flex-wrap: wrap;
     gap: 1rem 2rem;
+    justify-content: center;
+    align-items: center;
 }
 .content .bonus{
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: #14274A;
     width: 100%;
+    margin-bottom: 10px;
+}
+
+.content .bonus .success{
+    width: 50rem;
+    height: 20rem;
+    object-fit: contain;
 }
 
 .content .ket{
@@ -493,21 +520,218 @@ main{
     color: white;
 }
 
-
-
-/* .frame .date form button:hover{
-    background-color: white;
-    height: 3rem;
-    border: #3252DF solid 2px;
-    color: #3252DF;
-    font-size: medium;
-    font-weight: 700;
-} */
-
-
 .frame .date h3{
     font-size: large;
     margin: 10px;
+}
+
+
+.BS {
+    border-radius: 7px;
+    padding: 30px;
+    width: 100%;
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    font-family: 'Montserrat', sans-serif;
+    color: #14274A;
+}
+
+.BS img{
+    flex: 1;
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    border-radius: 7px;
+}
+
+.BS h2{
+    flex: 1;
+    margin: 0;
+    font-size: larger;
+    font-weight: 500;
+    text-align: left;
+    padding: 1rem 0;
+}
+
+.BS h4{
+    flex: 1;
+    margin: 0;
+    font-size: medium;
+    font-weight: 200;
+    text-align: left;
+}
+
+.BS .content-form{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10px;
+}
+
+.BS .content-form .form-group{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: right;
+}
+
+.BS .content-form .form-group .form-wrapper{
+    display: flex;
+    flex-direction: column;
+}
+
+.BS .content-form .form-group .form-wrapper label{
+    padding: .5rem 0;
+}
+
+.BS .content-form .form-group .form-wrapper input{
+    width: 15rem;
+    height: 2rem;
+    background-color: #F5F6F8;
+    border: none;
+}
+
+
+
+.BS .form-group button{
+    width: 7rem;
+    height: 2rem;
+    margin: 10px 0;
+    border: none;
+    font-size: small;
+    font-weight: 700;
+    border-radius: 5px;
+}
+
+.BS .form-group a{
+    color: white;
+}
+
+.BS .info{
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    height: 100%;
+}
+
+
+.BS .info .information{
+    flex-direction: row;
+    display: flex;
+    padding: 0 10px;
+    justify-content: space-between;
+}
+
+.BS .info .information h3{
+    font-size: medium;
+    font-weight: 500;
+}
+
+.BS .info .left-info{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+}
+
+.BS .info .sub-total .payment{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.BS .info .sub-total .payment h2{
+    padding: 1rem 1rem;
+}
+
+.BS .info .sub-total .payment h4{
+    padding: 1rem 0;
+}
+
+.BS .info .sub-total .total{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    padding: 2rem 0;
+}
+
+.BS .info .sub-total .total h2{
+    padding: 1rem 1rem;
+}
+
+.BS .info .sub-total .total h4{
+    padding: 1rem 0;
+}
+
+.BS .info .right-info{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    width: 50%;
+}
+
+.BS .content-form .form-wrapper-info{
+    display: flex;
+    flex-direction: column;
+}
+
+.BS .content-form .form-wrapper-info label{
+    margin-bottom: 10px;
+}
+
+.BS .content-form .form-wrapper-info input{
+    width: 15rem;
+    height: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.BS .content-form .form-wrapper-info select{
+    width: 15.5rem;
+    height: 2rem;
+    background-color: white;
+    border: #c7c7c7 solid .5px;
+    border-radius: 2.1px;
+}
+
+.BS .code{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 25rem;
+}
+
+.BS .code h1{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.BS .code h2{
+    padding: 10px 0;
+}
+
+.BS .code h4{
+    text-align: justify;
+}
+
+.content .content-btn{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 30%;
+}
+
+.content .content-btn button{
+    border: none;
+    height: 2rem;
+    border-radius: 5px;
+}
+
+.content .content-btn button a{
+    color: white;
 }
 
 footer{

@@ -40,7 +40,7 @@
                     <h2>Lorem ipsum dolor sit amet.</h2>
                 </div>
                 <div class="content-botton">
-                    <button type="button"><a href="<?php echo base_url('cawal/tampilroomdetails') ?>">Rp.99999999/Night</a></button>
+                    <button type="button"><a href="<?php echo base_url('clogin/formlogin'); ?>">Rp.99999999/Night</a></button>
                 </div>
             </article>
             <article id="room" class="room">

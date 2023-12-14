@@ -40,7 +40,7 @@
                     <h2>Lorem ipsum dolor sit amet.</h2>
                 </div>
                 <div class="content-botton">
-                    <button type="button"><a href="">Rp.99999999/Night</a></button>
+                    <button type="button"><a href="<?php echo base_url('cawal/tampilroomdetails') ?>">Rp.99999999/Night</a></button>
                 </div>
             </article>
             <article id="room" class="room">
@@ -52,7 +52,7 @@
                     <button type="button"><a href="">Rp.99999999/Night</a></button>
                 </div>
             </article>
-            </div>
+        </div>
     </main>
     <?php include('footer.php'); ?>
 </html>

@@ -13,28 +13,10 @@
             </section>
         </div>
         <div class="content">
-            <p class="home" ><a href="<?php echo $_SERVER['HTTP_REFERER']; ?>">X</a></p>
-            <form action="<?php echo base_url('cregister/simpandata'); ?>" name="formregister" id="formregister" method="post">
+            <p class="home" ><a href="">X</a></p>
+            <form action="<?php echo base_url('cawal/tampilawal'); ?>" name="formregister" id="formregister" method="post">
                 <section class="copy">
                     <h2>Sign Up</h2>
-                    <?php
-                        $pesan=$this->session->flashdata('pesan');
-                        if ($pesan=="")
-                        {
-                        echo "";	
-                        }
-                        else
-                        {	
-                    ?>
-                        
-                        <div class="alert alert-danger alert-dismissible">
-                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        <?php echo $pesan; ?>
-                        </div>
-                            
-                    <?php
-                        }
-                    ?>
                     <input type="hidden" name="id_pengguna" id="id_pengguna">
                     <div class="input-container name">
                         <label for="nama_lengkap">Nama Lengkap</label>
@@ -100,5 +82,6 @@
             </form>
         </div>
     </main>
+</body>
 </html>
 
