@@ -39,5 +39,20 @@
 		{
 			$this->load->view('roombooking3');	
 		}
+
+		function tampiladminp()
+		{
+			$this->load->view('adminP');	
+		}
+
+		function tampiladmink()
+		{
+			$this->load->view('adminK');	
+		}
+
+		function tampiladminl()
+		{
+			$this->load->view('adminL');	
+		}
 	}
 ?>

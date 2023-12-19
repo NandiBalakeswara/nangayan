@@ -1,0 +1,572 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&family=Playfair+Display:wght@400;700&family=Public+Sans:wght@200;300;400;500;700;900&family=Roboto+Slab:wght@200;300;400&display=swap');
+
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Public Sans', sans-serif;
+}
+
+a{
+    text-decoration: none;
+    color: #14274A;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+}
+
+aside{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 15rem;
+    height: 100vh;
+    color: #14274A;
+}
+
+aside h1{
+    color: #14274A;
+}
+
+aside .logo{
+    background-color: #E0B973;
+    width: 15rem;
+    height: 4rem;
+    border-bottom-left-radius: 25px ;
+    border-bottom-right-radius: 25px ;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    object-fit: contain;
+    padding: 20px 0;
+}
+
+aside .logo img{
+    width: 12rem;
+}
+
+aside .menu{
+    width: 15rem;
+    padding: 20px;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    margin-right: .5rem;
+}
+
+aside .menu h2{
+    margin: 10px 0;
+    width: 12rem;
+    padding: .5rem;
+    font-size: 1.5em;
+    border-radius: 10px;
+}
+
+aside .menu h2:hover{
+    background-color: #f0f1f5;
+}
+
+.content{
+    padding: 1.5rem;
+    background-color: #edeae4;
+    width: 100%;
+    height: 91.59vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content .title{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.content .title .btn{
+    display: flex;
+    align-items: end;
+    justify-content: end;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: 100%;
+}
+
+.content .title .btn button{
+    width: 20%;
+    padding: 7px;
+    font-size: large;
+    font-weight: 400;
+    background-color: #5973D0;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.content .title h1, h2{
+    margin-top: 0;
+    margin-bottom: 10px ;
+    color: #14274A;
+}
+
+.content .table{
+    border-radius: 25px;
+    background-color: #f0f1f5;
+    padding: 10px;
+    color: #14274A;
+
+}
+
+.content .table table{
+    border-collapse: collapse;
+    border-radius: 10px;
+    width: 60rem;
+    /* border: #14274A solid; */
+}
+
+.content .table table thead tr th{
+    border: #14274A;
+    padding: 10px 10px;
+    /* background-color: #adadad; */
+    border-bottom: solid .5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: larger;
+    font-weight: 500;
+    text-align: left;
+}
+
+.content .table table tbody tr{
+    border-bottom: solid .5px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.content .table table tbody tr td{
+    padding: 10px 10px;
+}
+
+.content .table table tbody tr th{
+    display: flex;
+    flex-direction: row;
+}
+
+.content .table table tbody tr th button{
+    /* padding: 5px; */
+    object-fit: contain;
+    background-color: transparent;
+    border: none;
+    /* margin: 5px; */
+    cursor: pointer;
+}
+
+.content .table table tbody tr th button img{
+    padding: 5px;
+    object-fit: contain;
+}
+
+/* Pop Up Tambah */
+.modaladd {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-add {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 60%;
+    height: 55%;
+}
+
+.modal-content-add .title{
+    display: flex;
+    flex-direction: row;
+    background-color: #5973D0;
+    padding: 20px;
+    width: 45.5rem;
+}
+
+.modal-content-add .title h1{
+    width: 100%;
+    font-size: xx-large;
+    font-weight: 500;
+    margin: 0;
+}
+
+.modal-content-add form{
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+}
+
+.modal-content-add form .form-wrapper-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 7px 15px;
+}
+
+.modal-content-add form .form-group{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modal-content-add form .form-group .form-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 7px 15px;
+    width: 100%;
+}
+
+.modal-content-add form .form-group .form-wrapper label{
+    margin: 3px 0;
+}
+
+.modal-content-add form .form-group .form-wrapper input, select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+
+}
+
+.modal-content-add form .form-wrapper-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+}
+
+.modal-content-add form .form-wrapper-rooms label{
+    margin: 3px 0;
+}
+
+.modal-content-add form .form-wrapper-rooms input, select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+}
+
+.modal-content-add form .btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 10px 15px;
+}
+
+.modal-content-add form .btn button {
+    margin: 3px;
+    width: 20%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+    font-size: medium;
+    border-radius: 5px;
+}
+  
+  /* The Close Button */
+.closeadd {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.closeadd:hover,
+.closeadd:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Pop Up Edit */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+  
+  /* Modal Content */
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 60%;
+    height: 55%;
+}
+
+.modal-content .title{
+    display: flex;
+    flex-direction: row;
+    background-color: #E0B973;
+    padding: 20px;
+    width: 45.5rem;
+}
+
+.modal-content .title h1{
+    width: 100%;
+    font-size: xx-large;
+    font-weight: 500;
+    margin: 0;
+}
+
+.modal-content form{
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+}
+
+.modal-content form .form-wrapper-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 7px 15px;
+    width: 100%;
+}
+
+.modal-content form .form-group{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modal-content form .form-group .form-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 7px 15px;
+    width: 100%;
+}
+
+.modal-content form .form-group .form-wrapper label{
+    margin: 3px 0;
+}
+
+.modal-content form .form-group .form-wrapper input, .modal-content form .form-group .form-wrapper select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+}
+
+.modal-content form .form-wrapper-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+}
+
+.modal-content form .form-wrapper-rooms label{
+    margin: 3px 0;
+}
+
+.modal-content form .form-wrapper-rooms input, .modal-content form .form-wrapper-rooms select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+    width: 94%;
+}
+
+.modal-content form .btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 10px 15px;
+}
+
+.modal-content form .btn button {
+    margin: 3px;
+    width: 20%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+    font-size: medium;
+    border-radius: 5px;
+}
+
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Pop Up Delete */
+.modaldlt {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content-delete {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 60%;
+    height: 55%;
+}
+
+.modal-content-delete .title{
+    display: flex;
+    flex-direction: row;
+    background-color: #D85050;
+    padding: 20px;
+    width: 45.5rem;
+}
+
+.modal-content-delete .title h1{
+    width: 100%;
+    font-size: xx-large;
+    font-weight: 500;
+    margin: 0;
+}
+
+.modal-content-delete form{
+    display: flex;
+    flex-direction: column;
+    /* padding: 20px; */
+}
+
+.modal-content-delete form .form-group{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.modal-content-delete form .form-group .form-wrapper{
+    display: flex;
+    flex-direction: column;
+    padding: 7px 15px;
+    width: 100%;
+}
+
+.modal-content-delete form .form-group .form-wrapper label{
+    margin: 3px 0;
+}
+
+.modal-content-delete form .form-group .form-wrapper input, select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+
+}
+
+.modal-content-delete form .form-wrapper-rooms{
+    display: flex;
+    flex-direction: column;
+    padding: 5px 15px;
+}
+
+.modal-content-delete form .form-wrapper-rooms label{
+    margin: 3px 0;
+}
+
+.modal-content-delete form .form-wrapper-rooms input, select{
+    margin: 3px 0;
+    background-color: white;
+    border: 2px #f0f1f5 solid;
+    height: 100%;
+    border-radius: 5px;
+    padding: 3px;
+    font-size: medium;
+    font-weight: 400;
+}
+
+.modal-content-delete form .btn{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    padding: 10px 15px;
+}
+
+.modal-content-delete form .btn button {
+    margin: 3px;
+    width: 20%;
+    padding: 5px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    font-weight: 400;
+    font-size: medium;
+    border-radius: 5px;
+}
+  
+  /* The Close Button */
+.closedlt {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.closedlt:hover,
+.closedlt:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
