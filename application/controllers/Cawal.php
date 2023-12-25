@@ -6,10 +6,6 @@
 			$this->load->view('landing_page');	
 		}	
 
-		function tampilrooms()
-		{
-			$this->load->view('rooms');	
-		}	
 		function tampilroomdetails()
 		{
 			$this->load->view('roomdetails');	
@@ -19,10 +15,7 @@
 		{
 			$this->load->view('homelogin');	
 		}
-		function tampilroomslogin()
-		{
-			$this->load->view('roomslogin');	
-		}
+		
 		function tampilstatus()
 		{
 			$this->load->view('status');	

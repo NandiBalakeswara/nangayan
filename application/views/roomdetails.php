@@ -11,45 +11,32 @@
         <div class="navbar-rd">
             <img src="<?php echo base_url('assets/styles/image/logotrsp.png'); ?>" alt="NangAyan Hotels" class="logo">
             <ul>
-                <li><a href="<?php echo base_url('cawal/tampilawal') ?>">Home</a></li>
-                <li><a href="<?php echo base_url('cawal/tampilrooms') ?>">Rooms</a></li>
-                <li><a href="<?php echo base_url('cregister/formregister'); ?>">Sign Up</a></li>
-                <li><a href="<?php echo base_url('clogin/formlogin'); ?>">Sign In</a></li>
+                <li><a href="<?php echo base_url('cawal/tampilhomelogin') ?>">Home</a></li>
+                <li><a href="<?php echo base_url('cawal/tampilroomslogin') ?>">Rooms</a></li>
+                <li><a href="<?php echo base_url('cawal/tampilstatus'); ?>">Status</a></li>
+                <li><a href="#" style="cursor: default;"><?php echo $this->session->userdata('nama_lengkap'); ?></a></li>
+                <a href="javascript:void(0)" onclick="logout();"><button>Logout</button></a>
             </ul>
         </div>
     </header>
     <main>
         <div class="content-rd">
-        <h1>Nama Rooms</h1>
+        <h1><?php echo $room->jenis_kamar; ?></h1>
             <div class="ket">
             Bali, Indonesia
                 <article class="picture">
-                    <div class="left">
-                        <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                    </div>
-                    <div class="right">
-                        <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                        <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels" style="margin-top: 12px;">
-                    </div>
+                    <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
                 </article>
                 <article class="frame">
                     <div class="desc" style="text-align: left;">
-                    <h3>Lorem ipsum dolor sit amet.</h3>
+                    <h3><?php echo $room->jenis_kamar; ?></h3>
                     <div class="detail">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Inventore odit, unde facilis molestias voluptatibus in!
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. <br><br>
-                        Iste repellendus odio ea, quo vel sapiente, laboriosam 
-                        exercitationem cupiditate rem minus praesentium atque? 
-                        Perferendis eaque, tempora praesentium iste deserunt a? <br><br>
-                        Assumenda!Iste repellendus odio ea, quo vel sapiente, 
-                        laboriosam exercitationem cupiditate rem minus praesentium 
-                        atque? Perferendis eaque, tempora praesentium iste deserunt a?
+                        <?php echo $room->deskripsi_kamar; ?>
                     </div>
                     </div>
                     <div class="date">
                         <h3>Start Booking</h3>
-                        <h2>Rp.999.999.999 Per Night</h2>
+                        <h2>Rp. <?php echo $room->harga; ?> Per Night</h2>
                         <form action="" method="post">
                             <label for="">Pick a Date In</label>
                             <input type="date" name="" id="">
@@ -60,6 +47,15 @@
                     </div>
                 </article>
             </div>
-    </main>
-    <?php include('footer.php'); ?>
+        </main>
+        <?php include('footer.php'); ?>
+        
+        <script>
+        function logout() {
+            if (confirm("Apakah anda yakin untuk logout?")) {
+                window.open("<?php echo base_url(); ?>clogin/logout", "_self");
+            }
+        }
+        </script>
+    </body>
 </html>

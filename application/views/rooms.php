@@ -34,24 +34,17 @@
             comfort isn't our only objective, we also value good design, sleek contemporary furnishing complemented 
             by the rich tones of nature's palette as visible from our room's sea-view windows and terraces.             
             </div>
-            <article id="room" class="room">
-                <div>
-                    <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </div>
-                <div class="content-botton">
-                    <button type="button"><a href="<?php echo base_url('clogin/formlogin'); ?>">Rp.99999999/Night</a></button>
-                </div>
-            </article>
-            <article id="room" class="room">
-                <div>
-                    <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                </div>
-                <div class="content-botton">
-                    <button type="button"><a href="">Rp.99999999/Night</a></button>
-                </div>
-            </article>
+            <?php foreach ($kamar as $room) { ?>
+                <article class="room">
+                    <div>
+                        <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
+                        <h2><?php echo $room->jenis_kamar; ?></h2>
+                    </div>
+                    <div class="content-botton">
+                        <button type="button"><a href="<?php echo base_url('clogin/formlogin'); ?>">Rp. <?php echo $room->harga; ?>/Night</a></button>
+                    </div>
+                </article>
+            <?php } ?>
             </div>
     </main>
     <?php include('footer.php'); ?>
