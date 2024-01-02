@@ -49,74 +49,6 @@
                     </tbody>
                 </table>
             </div>
-            <!-- Pop Up Edit -->
-            <div id="myModal" class="modal">
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <div class="title">
-                        <h1>Edit Pengguna</h1>
-                        <span class="close">&times;</span>
-                    </div>
-                    <form action="">
-                        <div class="form-group">
-                            <div class="form-wrapper">
-                                <label for="">Nama</label>
-                                <input type="text" name="" id="">
-                            </div>
-                            <div class="form-wrapper">
-                                <label for="">Email</label>
-                                <input type="text" name="" id="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-wrapper">
-                                <label for="">Password</label>
-                                <input type="text" name="" id="">
-                            </div>
-                            <div class="form-wrapper">
-                                <label for="">Jenis Kelamin</label>
-                                <select name="" id="">
-                                    <option value="">Jenis Kelamin</option>
-                                    <option value="">Laki-laki</option>
-                                    <option value="">Perempuan</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-wrapper">
-                                <label for="">Tempat Lahir</label>
-                                <input type="text" name="" id="">
-                            </div>
-                            <div class="form-wrapper">
-                                <label for="">Tanggal Lahir</label>
-                                <input type="date" name="" id="">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-wrapper">
-                                <label for="">Agama</label>
-                                <select name="" id="">
-                                    <option value="">Pilih Agama</option>
-                                    <option value="">Hindu</option>
-                                    <option value="">Islam</option>
-                                    <option value="">Katolik</option>
-                                    <option value="">Protestan</option>
-                                    <option value="">Buddha</option>
-                                    <option value="">Konghucu</option>
-                                </select>            
-                            </div>
-                            <div class="form-wrapper">
-                                <label for="">Alamat</label>
-                                <input type="text" name="" id="">  
-                            </div>
-                        </div>
-                        <div class="btn">
-                            <button type="submit" style="background-color: #E0B973;">Edit</button>
-                            <button type="reset" style="background-color: #626262;">Reset</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
             <div id="myModal" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
@@ -307,10 +239,9 @@ span.onclick = function() {
   modaldlt.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modaldlt) {
-    modaldlt.style.display = "none";
-  }
+    if (event.target == modaldlt) {
+        modaldlt.style.display = "none";
+    }
 }
 </script>

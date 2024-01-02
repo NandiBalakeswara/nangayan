@@ -153,12 +153,14 @@ aside .menu h2:hover{
 }
 
 .content .table table tbody tr th button{
-    /* padding: 5px; */
+    padding: 10px;
     object-fit: contain;
     background-color: transparent;
     border: none;
     /* margin: 5px; */
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
 
 .content .table table tbody tr th button img{
