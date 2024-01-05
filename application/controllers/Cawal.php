@@ -32,10 +32,5 @@
 		{
 			$this->load->view('roombooking3');	
 		}
-
-		function tampiladminp()
-		{
-			$this->load->view('adminP');	
-		}
 	}
 ?>

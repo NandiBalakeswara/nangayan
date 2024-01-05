@@ -19,11 +19,14 @@
             <div class="table">
                 <table>
                     <thead>
+    
                         <tr>
+                            <th>No</th>
                             <th>Nama</th>
                             <th>Email</th>
                             <th>Password</th>
                             <th>Jenis Kelamin</th>
+                            <th>No HP</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
                             <th>Alamat</th>
@@ -32,81 +35,108 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>hadhad</td>
-                            <td>jdabjdb</td>
-                            <td>hadhad</td>
-                            <td>jdabjdb</td>
-                            <td>hadhad</td>
-                            <td>jdabjdb</td>
-                            <td>hadhad</td>
-                            <td>jdabjdb</td>
+                    <?php
+                        if(empty($hasil))
+                        {
+                            echo "Data Kosong";	
+                        }
+                        else
+                        {
+                            $no=1;
+                            foreach($hasil as $data):
+                        ?>
+                    
+                        <tr id='baris'>
+                            <td><?php echo $no ?></td>
+                            <td><?php echo $data->nama_lengkap;?></td>
+                            <td><?php echo $data->username;?></td>
+                            <td><?php echo $data->password;?></td>
+                            <td><?php echo $data->jenis_kelamin;  ?></td>
+                            <td><?php echo $data->nomor_hp;  ?></td>
+                            <td><?php echo $data->tempat_lahir;  ?></td>
+                            <td><?php echo $data->tgl_lahir;  ?></td>
+                            <td><?php echo $data->alamat;  ?></td>
+                            <td><?php echo $data->agama;  ?></td>
                             <th>
-                                <button id="myBtn"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
-                                <button id="myBtn-dlt"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
+                                <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
+                                <button id="myBtn-dlt_<?php echo $no; ?>" onclick="openModalDelete(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
                             </th>
                         </tr>
+                    <?php
+                        $no++;
+                        endforeach;
+                        }
+                    ?> 
                     </tbody>
                 </table>
             </div>
-            <div id="myModal" class="modal">
+            <!-- Pop Up Edit -->
+            <?php $no=1; foreach ($hasil as $data) { ?>
+            <div id="myModal_<?php echo $no; ?>" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <div class="title">
                         <h1>Edit Pengguna</h1>
-                        <span class="close">&times;</span>
+                        <span class="close" onclick="closeModal(<?php echo $no; ?>)">&times;</span>
                     </div>
-                    <form action="">
+                    <form action="<?php echo base_url('cpengguna/editdatapengguna'); ?>" method="POST">
                         <div class="form-group">
                             <div class="form-wrapper">
+                            <input type="hidden" name="id_pengguna" value="<?php echo $data->id_pengguna ?>">
                                 <label for="">Nama</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="nama_lengkap" id="" value="<?php echo $data->nama_lengkap?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Email</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="username" id="" value="<?php echo $data->username?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Password</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="password" id="" value="<?php echo $data->password?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Jenis Kelamin</label>
-                                <select name="" id="">
+                                <select name="jenis_kelamin" id="">
                                     <option value="">Jenis Kelamin</option>
-                                    <option value="">Laki-laki</option>
-                                    <option value="">Perempuan</option>
+                                    <option value="Laki-laki" <?= ($data->jenis_kelamin == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki</option>
+                                    <option value="Perempuan" <?= ($data->jenis_kelamin == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Tempat Lahir</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="tempat_lahir" id="" value="<?php echo $data->tempat_lahir?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Tanggal Lahir</label>
-                                <input type="date" name="" id="">
+                                <input type="date" name="tgl_lahir" id="" value="<?php echo $data->tgl_lahir?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Agama</label>
-                                <select name="" id="">
+                                <select name="agama" id="edit-agama">
                                     <option value="">Pilih Agama</option>
-                                    <option value="">Hindu</option>
-                                    <option value="">Islam</option>
-                                    <option value="">Katolik</option>
-                                    <option value="">Protestan</option>
-                                    <option value="">Buddha</option>
-                                    <option value="">Konghucu</option>
+                                    <option value="Hindu" <?= ($data->agama == 'Hindu') ? 'selected' : '' ?>>Hindu</option>
+                                    <option value="Islam" <?= ($data->agama == 'Islam') ? 'selected' : '' ?>>Islam</option>
+                                    <option value="Katolik" <?= ($data->agama == 'Katolik') ? 'selected' : '' ?>>Katolik</option>
+                                    <option value="Protestan" <?= ($data->agama == 'Protestan') ? 'selected' : '' ?>>Protestan</option>
+                                    <option value="Buddha" <?= ($data->agama == 'Buddha') ? 'selected' : '' ?>>Buddha</option>
+                                    <option value="Konghucu" <?= ($data->agama == 'Konghucu') ? 'selected' : '' ?>>Konghucu</option>
                                 </select>            
                             </div>
                             <div class="form-wrapper">
+                                <label for="">Nomor HP</label>
+                                <input type="text" name="nomor_hp" id="" value="<?php echo $data->nomor_hp?>">  
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-wrapper">
                                 <label for="">Alamat</label>
-                                <input type="text" name="" id="">  
+                                <input type="text" name="alamat" id="" value="<?php echo $data->alamat?>">  
                             </div>
                         </div>
                         <div class="btn">
@@ -117,46 +147,47 @@
                 </div>
             </div>
             <!-- Pup Up Hapus -->
-            <div id="myModal-delete" class="modaldlt">
+            <div id="myModal-delete_<?php echo $no; ?>" class="modaldlt">
                 <!-- Modal content -->
                 <div class="modal-content-delete">
                     <div class="title">
                         <h1>Hapus Pengguna</h1>
-                        <span class="closedlt">&times;</span>
+                        <span class="closedlt" onclick="closeModalDelete(<?php echo $no; ?>)">&times;</span>
                     </div>
-                    <form action="">
+                    <form action="<?php echo base_url('cpengguna/hapusdatapengguna'); ?>" method="POST">
                         <div class="form-group">
                             <div class="form-wrapper">
+                            <input type="hidden" name="id_pengguna" value="<?php echo $data->id_pengguna ?>">
                                 <label for="">Nama</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="" disabled value="<?php echo $data->nama_lengkap?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Email</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="" disabled value="<?php echo $data->username?>">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Password</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id="" disabled value="<?php echo $data->password?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Jenis Kelamin</label>
                                 <select name="" id="">
                                     <option value="">Jenis Kelamin</option>
-                                    <option value="">Laki-laki</option>
-                                    <option value="">Perempuan</option>
+                                    <option disabled value="Laki-laki" <?= ($data->jenis_kelamin == 'Laki-laki') ? 'selected' : '' ?>>Laki-laki</option>
+                                    <option disabled value="Perempuan" <?= ($data->jenis_kelamin == 'Perempuan') ? 'selected' : '' ?>>Perempuan</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Tempat Lahir</label>
-                                <input type="text" name="" id="">
+                                <input type="text" name="" id=""  disabled value="<?php echo $data->tempat_lahir?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Tanggal Lahir</label>
-                                <input type="date" name="" id="">
+                                <input type="date" name="" id="" disabled value="<?php echo $data->tgl_lahir?>">
                             </div>
                         </div>
                         <div class="form-group">
@@ -164,17 +195,23 @@
                                 <label for="">Agama</label>
                                 <select name="" id="">
                                     <option value="">Pilih Agama</option>
-                                    <option value="">Hindu</option>
-                                    <option value="">Islam</option>
-                                    <option value="">Katolik</option>
-                                    <option value="">Protestan</option>
-                                    <option value="">Buddha</option>
-                                    <option value="">Konghucu</option>
+                                    <option disabled value="Hindu" <?= ($data->agama == 'Hindu') ? 'selected' : '' ?>>Hindu</option>
+                                    <option disabled value="Islam" <?= ($data->agama == 'Islam') ? 'selected' : '' ?>>Islam</option>
+                                    <option disabled value="Katolik" <?= ($data->agama == 'Katolik') ? 'selected' : '' ?>>Katolik</option>
+                                    <option disabled value="Protestan" <?= ($data->agama == 'Protestan') ? 'selected' : '' ?>>Protestan</option>
+                                    <option disabled value="Buddha" <?= ($data->agama == 'Buddha') ? 'selected' : '' ?>>Buddha</option>
+                                    <option disabled value="Konghucu" <?= ($data->agama == 'Konghucu') ? 'selected' : '' ?>>Konghucu</option>
                                 </select>            
                             </div>
                             <div class="form-wrapper">
+                                <label for="">Nomor HP</label>
+                                <input type="text" name="" id="" disabled value="<?php echo $data->nomor_hp?>">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                        <div class="form-wrapper">
                                 <label for="">Alamat</label>
-                                <input type="text" name="" id="">  
+                                <input type="text" name="" id=""  disabled value="<?php echo $data->alamat?>">  
                             </div>
                         </div>
                         <div class="btn">
@@ -184,64 +221,61 @@
                     </form>
                 </div>
             </div>
+            <?php $no++; ?>
+            <?php } ?>
         </div>
     </main>
 </body>
 </html>
 
 <script>
-//pop up edit
-// Get the modal
-var modal = document.getElementById("myModal");
+        // Pop-up edit
+        function openModal(no) {
+            var modal = document.getElementById("myModal_" + no);
+            modal.style.display = "block";
+        }
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+        function closeModal(no) {
+            var modal = document.getElementById("myModal_" + no);
+            modal.style.display = "none";
+        }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Pop-up delete
+        function openModalDelete(no) {
+            var modal = document.getElementById("myModal-delete_" + no);
+            modal.style.display = "block";
+        }
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+        function closeModalDelete(no) {
+            var modal = document.getElementById("myModal-delete_" + no);
+            modal.style.display = "none";
+        }
 </script>
-
 <script>
-//Pop Up Delete
-// Get the modal
-var modaldlt = document.getElementById("myModal-delete");
+// Pop-up edit
+function openModalEdit(no) {
+    var modal = document.getElementById("myModal_" + no);
+    modal.style.display = "block";
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn-dlt");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closedlt")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modaldlt.style.display = "block";
+    // Tambahkan event listener untuk menutup pop-up saat pengguna mengklik di luar pop-up
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modaldlt.style.display = "none";
+// Pop-up delete
+function openModalDelete(no) {
+    var modal = document.getElementById("myModal-delete_" + no);
+    modal.style.display = "block";
+
+    // Tambahkan event listener untuk menutup pop-up saat pengguna mengklik di luar pop-up
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 }
 
-window.onclick = function(event) {
-    if (event.target == modaldlt) {
-        modaldlt.style.display = "none";
-    }
-}
 </script>

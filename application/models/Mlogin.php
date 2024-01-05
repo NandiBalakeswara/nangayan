@@ -26,8 +26,7 @@
 				{
 					if($Level =='Admin'){
 						$this->session->set_userdata($session);
-						
-						redirect('cadmin/tampiladminp');
+						redirect('cpengguna/tampiladminp');
 
 					}
 					else{
