@@ -13,9 +13,14 @@ class Cregister extends CI_Controller {
     {
         $this->load->view('register');
     }
+
     public function simpandata()
 	{
 		$this->mregister->simpandata();
 		redirect('clogin/formlogin');	
 	}
+
+   
+
 }
+?>
