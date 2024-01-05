@@ -38,10 +38,10 @@
 			$this->load->view('adminP');	
 		}
 
-		function tampiladmink()
-		{
-			$this->load->view('adminK');	
-		}
+		// function tampiladmink()
+		// {
+		// 	$this->load->view('adminK');	
+		// }
 
 		function tampiladminl()
 		{

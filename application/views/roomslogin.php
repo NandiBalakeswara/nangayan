@@ -37,8 +37,8 @@
             <?php foreach ($kamar as $room) { ?>
                 <article class="room">
                     <div>
-                        <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                        <h2><?php echo $room->jenis_kamar; ?></h2>
+                    <img src=" <?php echo base_url('berkas/'.$room->foto); ?>" alt="NangAyan Hotels">
+                    <h2><?php echo $room->jenis_kamar; ?></h2>
                     </div>
                     <div class="content-botton">
                         <button type="button"><a href="<?php echo base_url('crooms/tampilroomdetails/' . $room->id_kamar); ?>">Rp. <?php echo $room->harga; ?>/Night</a></button>
