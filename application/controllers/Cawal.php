@@ -45,7 +45,7 @@
 
 		function tampiladminl()
 		{
-			$this->load->view('adminL');	
+			$this->load->view('adminL');	  
 		}
 	}
 ?>

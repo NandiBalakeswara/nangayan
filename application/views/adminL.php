@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="<?php echo base_url('assets/styles/admin.css'); ?>">
-    <title>Admin-Layanan</title>
+    <title>Admin-Pengguna</title>
 </head>
 <body>
     <main>
@@ -12,6 +12,9 @@
         <div class="content">
             <div class="user">
                 <h2>admin</h2>
+            </div>
+            <div class="title">
+                <h1>Pengguna</h1>
             </div>
             <div class="title">
                 <h1>Layanan</h1>
@@ -22,23 +25,42 @@
             <div class="table">
                 <table>
                     <thead>
+    
                         <tr>
+                            <th>No</th>
                             <th>Jenis Layanan</th>
-                            <th>Deskripsi</th>
-                            <th>Harga</th>
+                            <th>Deskripsi Layanan</th>
+                            <th>Harga Layanan</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>hadhad</td>
-                            <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis iste aliquid iure doloribus nam eos nisi debitis asperiores molestias exercitationem. Recusandae earum sequi, vel distinctio, dolor consequuntur, iusto placeat ad porro enim harum odit culpa quae quisquam commodi repellat soluta. Aliquam debitis ut sequi facere illum, necessitatibus minima est eveniet!</td>
-                            <td>hadhad</td>
+                    <?php
+                        if(empty($hasil))
+                        {
+                            echo "Data Kosong";	
+                        }
+                        else
+                        {
+                            $no=1;
+                            foreach($hasil as $data):
+                        ?>
+                    
+                        <tr id='baris'>
+                            <td><?php echo $no ?></td>
+                            <td><?php echo $data->jenis_layanan;?></td>
+                            <td><?php echo $data->deskripsi_layanan;?></td>
+                            <td><?php echo $data->harga_layanan;?></td>
                             <th>
-                                <button id="myBtn"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
-                                <button id="myBtn-dlt"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
+                                <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
+                                <button id="myBtn-dlt_<?php echo $no; ?>" onclick="openModalDelete(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
                             </th>
                         </tr>
+                    <?php
+                        $no++;
+                        endforeach;
+                        }
+                    ?> 
                     </tbody>
                 </table>
             </div>
@@ -50,14 +72,20 @@
                         <h1>Tambah Layanan</h1>
                         <span class="closeadd">&times;</span>
                     </div>
-                    <form action="">
+                    <form action="<?= base_url('Clayanan/addlayanan') ?>" method="POST"> <!-- form -->
                             <div class="form-wrapper-rooms">
-                                <label for="">Jenis Layanan</label>
-                                <input type="text" name="" id="">
-                                <label for="">Deskripsi</label>
-                                <input type="text" name="" id="">
-                                <label for="">Harga</label>
-                                <input type="text" name="" id=""> 
+                                <label for="jenis_layanan">Jenis Layanan</label> 
+                                <select name="jenis_layanan" id="jenis_layanan">
+                                    <option value="">Pilih Jenis Layanan</option>
+                                    <option value="Ekstra_Bed">Ekstra Bed</option>
+                                    <option value="Breakfast">Breakfast</option>
+                                    <option value="Lunch">Lunch</option>
+                                    <option value="Dinner">Dinner</option>
+                                </select>
+                                <label for="deskripsi-layanan">Deskripsi</label>
+                                <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" >
+                                <label for="harga">Harga</label>
+                                <input type="text" name="harga_layanan" id="harga_layanan">  
                             </div>
                         <div class="btn">
                             <button type="submit" style="background-color: #5973D0;">Submit</button>
@@ -67,45 +95,66 @@
                 </div>
             </div>
             <!-- Pop Up Edit -->
-            <div id="myModal" class="modal">
+            <?php $no=1; foreach ($hasil as $data) { ?>
+            <div id="myModal_<?php echo $no; ?>" class="modal">
                 <!-- Modal content -->
                 <div class="modal-content">
                     <div class="title">
                         <h1>Edit Layanan</h1>
-                        <span class="close">&times;</span>
+                        <span class="close" onclick="closeModal(<?php echo $no; ?>)">&times;</span>
                     </div>
-                    <form action="">
+                    <form method='POST' action="<?= base_url('Clayanan/editlayanan') ?>"> <!-- form -->
+                        <input type="hidden" name="id_layanan" value="<?php echo $data->id_layanan; ?>">
                             <div class="form-wrapper-rooms">
-                                <label for="">Jenis Layanan</label>
-                                <input type="text" name="" id="">
-                                <label for="">Deskripsi</label>
-                                <input type="text" name="" id="">
-                                <label for="">Harga</label>
-                                <input type="text" name="" id=""> 
+                                <<label for="jenis_layanan">Jenis Layanan</label> 
+                                <select name="jenis_layanan" id="jenis_layanan">
+                                    <option value="">Pilih Jenis Layanan</option>
+                                    <option value="Ekstra_Bed" <?php echo ($data->jenis_layanan == 'Ekstra_Bed') ? 'selected' : ''; ?> >Ekstra Bed</option>
+                                    <option value="Breakfast" <?php echo ($data->jenis_layanan == 'Breakfast') ? 'selected' : ''; ?> >Breakfast</option>
+                                    <option value="Lunch" <?php echo ($data->jenis_layanan == 'Lunch') ? 'selected' : ''; ?> >Lunch</option>
+                                    <option value="Dinner" <?php echo ($data->jenis_layanan == 'Dinner') ? 'selected' : ''; ?> >Dinner</option>
+                                </select>
+                                <label for="deskripsi_layanan">Deskripsi</label>
+                                <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>">
+                                <label for="harga">Harga</label>
+                                <input type="text" name="harga_layanan" id="harga_layanan" value="<?php echo $data->harga_layanan; ?>"> 
                             </div>
-                        <div class="btn">
-                            <button type="submit" style="background-color: #E0B973;">Edit</button>
-                            <button type="reset" style="background-color: #626262;">Reset</button>
+                            <div class="btn">
+                            <!-- <button type="submit" style="background-color: #E0B973;">Edit</button>
+                            <button type="reset" style="background-color: #626262;">Reset</button> -->
+                            <button  type="submit"  style="background-color: #E0B973;" id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)" alt="edit">
+                            Edit
+                            </button>
+                            <button type="reset" style="background-color: #626262;">
+                            Reset
+                            </button> 
                         </div>
                     </form>
                 </div>
             </div>
             <!-- Pup Up Hapus -->
-            <div id="myModal-delete" class="modaldlt">
+            <div id="myModal-delete_<?php echo $no; ?>" class="modaldlt">
                 <!-- Modal content -->
                 <div class="modal-content-delete">
                     <div class="title">
-                        <h1>Hapus Layanan</h1>
-                        <span class="closedlt">&times;</span>
+                        <h1>Hapus Pengguna</h1>
+                        <span class="closedlt" onclick="closeModalDelete(<?php echo $no; ?>)">&times;</span>
                     </div>
-                    <form action="">
+                    <form  method='POST' action="<?= base_url('Clayanan/deletelayanan') ?>"> <!-- form -->>
                             <div class="form-wrapper-rooms">
-                                <label for="">Jenis Layanan</label>
-                                <input type="text" name="" id="">
-                                <label for="">Deskripsi</label>
-                                <input type="text" name="" id="">
-                                <label for="">Harga</label>
-                                <input type="text" name="" id=""> 
+                            <input type="hidden" name="id_layanan" disable value="<?php echo $data->id_layanan; ?>">
+                            <label for="tambah-jenis_layanan">Jenis Layanan</label> 
+                                <select name="jenis_layanan" id="tambah-jenis_layanan">
+                                    <option disabled value="">Pilih Jenis Layanan</option>
+                                    <option disabled value="Ekstra Bed" <?php echo ($data->jenis_layanan == 'Ekstra_Bed') ? 'selected' : ''; ?> >Ekstra Bed</option>
+                                    <option disabled value="Breakfast" <?php echo ($data->jenis_layanan == 'Breakfast') ? 'selected' : ''; ?>>Breakfast</option>
+                                    <option disabled value="Lunch" <?php echo ($data->jenis_layanan == 'Lunch') ? 'selected' : ''; ?>>Lunch</option>
+                                    <option disabled value="Dinner" <?php echo ($data->jenis_layanan == 'Dinner') ? 'selected' : ''; ?>>Dinner</option>
+                                </select>
+                                <label for="tambah-deskripsi-layanan">Deskripsi</label>
+                                <input type="text" name="deskripsi_layanan" id="tambah-deskripsi_layanan" disabled value="<?php echo $data->deskripsi_layanan; ?>">
+                                <label for="tambah-harga">Harga</label>
+                                <input type="text" name="harga_layanan" id="tambah-harga_layanan" disabled value="<?php echo $data->harga_layanan; ?>"> 
                             </div>
                         <div class="btn">
                             <button type="submit" style="background-color: #D85050;">Hapus</button>
@@ -114,6 +163,8 @@
                     </form>
                 </div>
             </div>
+            <?php $no++; ?>
+            <?php } ?>
         </div>
     </main>
 </body>
@@ -149,59 +200,59 @@ window.onclick = function(event) {
 </script>
 
 <script>
-//pop up edit
-// Get the modal
-var modal = document.getElementById("myModal");
+        // Pop-up edit
+        function openModal(no) {
+            var modal = document.getElementById("myModal_" + no);
+            modal.style.display = "block";
+        }
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn");
+        function closeModal(no) {
+            var modal = document.getElementById("myModal_" + no);
+            modal.style.display = "none";
+        }
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+        // Pop-up delete
+        function openModalDelete(no) {
+            var modal = document.getElementById("myModal-delete_" + no);
+            modal.style.display = "block";
+        }
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+        function closeModalDelete(no) {
+            var modal = document.getElementById("myModal-delete_" + no);
+            modal.style.display = "none";
+        }
 </script>
 
 <script>
-//Pop Up Delete
-// Get the modal
-var modaldlt = document.getElementById("myModal-delete");
+// Pop-up edit
+function openModalEdit(no) {
+    var modal = document.getElementById("myModal_" + no);
+    modal.style.display = "block";
 
-// Get the button that opens the modal
-var btn = document.getElementById("myBtn-dlt");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("closedlt")[0];
-
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modaldlt.style.display = "block";
+    // Tambahkan event listener untuk menutup pop-up saat pengguna mengklik di luar pop-up
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modaldlt.style.display = "none";
+// Pop-up delete
+function openModalDelete(no) {
+    var modal = document.getElementById("myModal-delete_" + no);
+    modal.style.display = "block";
+
+    // Tambahkan event listener untuk menutup pop-up saat pengguna mengklik di luar pop-up
+    window.addEventListener("click", function(event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    });
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modaldlt) {
-    modaldlt.style.display = "none";
-  }
-}
+</script>
+
+<script>
+    function edit
+
 </script>
