@@ -11,13 +11,15 @@
             return $query->result();
         }
 
-        public function updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran){
+        public function updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran, $kode_pembayaran, $nomor_kamar){
             $data = array(
                 'id_pengguna' => $id_pengguna,
                 'id_kamar' => $id_kamar,
                 'id_layanan' => $id_layanan,
                 'status_pemesanan' => $status_pemesanan,
-                'status_pembayaran' => $status_pembayaran
+                'status_pembayaran' => $status_pembayaran,
+                'kode_pembayaran' => $kode_pembayaran,
+                'nomor_kamar' => $nomor_kamar
             );
         
             $this->db->where('id_pemesanan', $id_pemesanan);

@@ -216,7 +216,7 @@
                         </div>
                         <div class="btn">
                             <button type="submit" style="background-color: #D85050;">Hapus</button>
-                            <button type="reset" style="background-color: #626262;">Reset</button>
+                            <button type="reset" style="background-color: #626262;" disabled>Reset</button>
                         </div>
                     </form>
                 </div>

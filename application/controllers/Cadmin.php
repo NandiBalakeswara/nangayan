@@ -38,9 +38,11 @@ class Cadmin extends CI_Controller {
 		$id_layanan = $this->input->post('id_layanan');
 		$status_pemesanan = $this->input->post('status_pemesanan');
 		$status_pembayaran = $this->input->post('status_pembayaran');
+		$kode_pembayaran = $this->input->post('kode_pembayaran');
+		$nomor_kamar = $this->input->post('nomor_kamar');
 	
 		// Panggil model untuk melakukan update
-		$this->madmin->updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran);
+		$this->madmin->updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran,$kode_pembayaran,$nomor_kamar);
 	
 		// Redirect atau lakukan operasi lain sesuai kebutuhan
 		redirect('cadmin/tampiladminpesan');

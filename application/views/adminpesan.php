@@ -28,6 +28,8 @@
                             <th>Tanggal Keluar</th>
                             <th>Status Pemesanan</th>
                             <th>Status Pembayaran</th>
+                            <th>Kode Pembayaran</th>
+                            <th>Nomor Kamar</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -46,6 +48,8 @@
                                     <td><?php echo $pesan->waktu_keluar; ?></td>
                                     <td><?php echo $pesan->status_pemesanan; ?></td>
                                     <td><?php echo $pesan->status_pembayaran; ?></td>
+                                    <td><?php echo $pesan->kode_pembayaran; ?></td>
+                                    <td><?php echo $pesan->nomor_kamar; ?></td>
                                     <th>
                                         <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
                                         <button id="myBtn-dlt_<?php echo $no; ?>" onclick="openModalDelete(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
@@ -122,6 +126,16 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="form-group">   
+                            <div class="form-wrapper">
+                                <label for="">Kode Pembayaran</label>
+                                <input type="text" name="kode_pembayaran" id="kode_pembayaran"  value="<?php echo $pesan->kode_pembayaran; ?>">
+                            </div>
+                            <div class="form-wrapper">
+                                <label for="">Nomor Kamar</label>
+                                <input type="text" name="nomor_kamar" id="nomor_kamar"  value="<?php echo $pesan->nomor_kamar; ?>">
+                            </div>
+                        </div>
                         <div class="btn">
                             <button type="submit" style="background-color: #E0B973;">Edit</button>
                             <button type="reset" style="background-color: #626262;">Reset</button>
@@ -176,9 +190,19 @@
                                 <input type="text" name="" id="" disabled value="<?php echo $pesan->status_pembayaran; ?>">                       
                             </div>
                         </div>
+                        <div class="form-group">   
+                            <div class="form-wrapper">
+                                <label for="">Kode Pembayaran</label>
+                                <input type="text" name="" id="" disabled value="<?php echo $pesan->waktu_masuk; ?>">
+                            </div>
+                            <div class="form-wrapper">
+                                <label for="">Nomor Kamar</label>
+                                <input type="text" name="" id="" disabled value="<?php echo $pesan->nomor_kamar; ?>">
+                            </div>
+                        </div>
                         <div class="btn">
                             <button type="submit" style="background-color: #D85050;">Hapus</button>
-                            <button type="reset" style="background-color: #626262;">Reset</button>
+                            <button type="reset" style="background-color: #626262;" disabled>Reset</button>
                         </div>
                     </form>
                 </div>
