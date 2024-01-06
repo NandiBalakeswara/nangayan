@@ -66,11 +66,19 @@ aside .menu h2:hover{
     background-color: #f0f1f5;
 }
 
+aside .menu .logout{
+    margin-top: 5.5rem;
+}
+
+aside .menu .logout h2{
+    color: #D85050;
+}
+
 .content{
     padding: 1.5rem;
     background-color: #edeae4;
     width: 100%;
-    height: 100%;
+    height: 91.45vh;
     display: flex;
     flex-direction: column;
 }
@@ -78,7 +86,7 @@ aside .menu h2:hover{
 .content .title{
     display: flex;
     flex-direction: row;
-    width: 100%;
+    /* width: 100%; */
 }
 
 .content .title .btn{
@@ -191,7 +199,7 @@ aside .menu h2:hover{
     margin: auto;
     border: 1px solid #888;
     width: 60%;
-    height: 77%;
+    /* height: 77%; */
 }
 
 .modal-content-add .title{
@@ -199,11 +207,12 @@ aside .menu h2:hover{
     flex-direction: row;
     background-color: #5973D0;
     padding: 20px;
-    width: 45.5rem;
+    justify-content: space-between;
+    /* width: 45.5rem; */
 }
 
 .modal-content-add .title h1{
-    width: 100%;
+    /* width: 100%; */
     font-size: xx-large;
     font-weight: 500;
     margin: 0;
@@ -328,7 +337,7 @@ aside .menu h2:hover{
     margin: auto;
     border: 1px solid #888;
     width: 60%;
-    height: 90%;
+    /* height: 90%; */
     margin: 30px auto;
 }
 
@@ -337,11 +346,12 @@ aside .menu h2:hover{
     flex-direction: row;
     background-color: #E0B973;
     padding: 20px;
-    width: 45.5rem;
+    /* width: 45.5rem; */
+    justify-content: space-between;
 }
 
 .modal-content .title h1{
-    width: 100%;
+    /* width: 100%; */
     font-size: xx-large;
     font-weight: 500;
     margin: 0;
@@ -466,7 +476,7 @@ aside .menu h2:hover{
     margin: auto;
     border: 1px solid #888;
     width: 60%;
-    height: 90%;
+    /* height: 90%; */
     margin: 30px auto;
 }
 
@@ -475,11 +485,12 @@ aside .menu h2:hover{
     flex-direction: row;
     background-color: #D85050;
     padding: 20px;
-    width: 45.5rem;
+    justify-content: space-between;
+    /* width: 45.5rem; */
 }
 
 .modal-content-delete .title h1{
-    width: 100%;
+    /* width: 100%; */
     font-size: xx-large;
     font-weight: 500;
     margin: 0;

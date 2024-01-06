@@ -143,7 +143,7 @@
                         <h1>Hapus Pengguna</h1>
                         <span class="closedlt" onclick="closeModalDelete(<?php echo $no; ?>)">&times;</span>
                     </div>
-                    <form  method='POST' action="<?= base_url('Clayanan/deletelayanan') ?>"> <!-- form -->>
+                    <form  method='POST' action="<?= base_url('Clayanan/deletelayanan') ?>"> <!-- form -->
                             <div class="form-wrapper-rooms">
                             <input type="hidden" name="id_layanan" disable value="<?php echo $data->id_layanan; ?>">
                             <label for="tambah-nama_layanan">Jenis Layanan</label> 
@@ -158,6 +158,10 @@
                                 <input type="text" name="deskripsi_layanan" id="tambah-deskripsi_layanan" disabled value="<?php echo $data->deskripsi_layanan; ?>">
                                 <label for="tambah-harga">Harga</label>
                                 <input type="text" name="harga_layanan" id="tambah-harga_layanan" disabled value="<?php echo $data->harga_layanan; ?>"> 
+                                <div class="btn">
+                                    <button type="submit" style="background-color: #D85050;">Hapus</button>
+                                    <button type="reset" style="background-color: #626262;">Reset</button>
+                                </div>
                             </div>
                         </form>
                     </div>
