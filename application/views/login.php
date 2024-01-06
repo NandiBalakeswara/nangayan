@@ -19,13 +19,16 @@
                     <h2>Sign In</h2>
                     <div class="login-container">
                     </div>
+                    <p id="error-message" class="<?php echo ($this->session->flashdata('pesan')) ? 'cant_login' : ''; ?>">
+                        <?php echo $this->session->flashdata('pesan'); ?>
+                    </p>                
                     <div class="input-container name">
                         <label for="username">Email</label>
-                        <input type="text" name="username" id="username">
+                        <input type="text" name="username" id="username" required>
                     </div>
                     <div class="input-container pass">
                         <label for="password">Password</label>
-                        <input type="password" name="password" id="password">
+                        <input type="password" name="password" id="password" required>
                     </div>
                     <button type="submit" class="signin-btn" onclick="proseslogin()">
                         Sign In
@@ -37,4 +40,3 @@
     </main>
 </body>
 </html>
-

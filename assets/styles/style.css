@@ -231,11 +231,9 @@ a{
     transform: translateX(-50%);
     overflow: hidden;
     transition: 0.2s ease-in-out;
-}
-
-.title button a{
     color: white;
 }
+
 
 .title button:hover{
     background-color: #E0B973;

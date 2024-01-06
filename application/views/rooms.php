@@ -21,7 +21,7 @@
                         redefined at the most affordable rates
                     </p>
                     <div>
-                        <button type="button"><a href="#room">Book Now</a></button>
+                        <a href="#room"><button type="button">Book Now</button></a>                        
                     </div>
                 </div>
         </div>
@@ -35,7 +35,7 @@
             by the rich tones of nature's palette as visible from our room's sea-view windows and terraces.             
             </div>
             <?php foreach ($kamar as $room) { ?>
-                <article class="room">
+                <article class="room" id="room">
                     <div>
                         <img src=" <?php echo base_url('berkas/'.$room->foto); ?>" alt="NangAyan Hotels">
                         <h2><?php echo $room->jenis_kamar; ?></h2>

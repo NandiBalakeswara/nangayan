@@ -40,7 +40,7 @@
 			else
 			{
 				//tidak ada data	
-				$this->session->set_flashdata('pesan','Login gagal');
+				$this->session->set_flashdata('pesan','Username atau Password yang anda masukan salah');
 				redirect('clogin/formlogin');
 				
 			}

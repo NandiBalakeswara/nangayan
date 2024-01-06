@@ -21,7 +21,7 @@
                         redefined at the most affordable rates
                     </p>
                     <div>
-                        <button type="button"><a href="<?php echo base_url('crooms/tampilrooms') ?>">Book Now</a></button>
+                      <a href="<?php echo base_url('crooms/tampilrooms') ?>"><button type="button">Book Now</button></a>                        
                     </div>
                 </div>
                 

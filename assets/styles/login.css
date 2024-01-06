@@ -83,8 +83,10 @@ form select {
     padding: 0.5em;
     margin-bottom: 10ox;
     font-size: medium;
-
+    background-color: white;
 }
+
+
 
 label{
     display: block;
@@ -148,6 +150,12 @@ label{
     font-size: medium;
 }
 
+.content .copy .cant_login{
+    background-color: #f3616d;
+    padding: .5rem;
+    border-radius: 5px;
+    color: white;
+}
 
 .form-group {
     display: flex; }
