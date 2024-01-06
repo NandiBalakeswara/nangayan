@@ -70,7 +70,7 @@ aside .menu h2:hover{
     padding: 1.5rem;
     background-color: #edeae4;
     width: 100%;
-    height: 91.59vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
 }
