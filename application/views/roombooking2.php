@@ -23,15 +23,15 @@
                         <div class="sub-total">
                             <div class="payment">
                                 <h4>Sub Total Kamar :</h4>
-                                <h2>Rp.999.999.999,00</h2>
+                                <h2>Rp.<?php echo ($pemesanan->harga*$pemesanan->jumlah_hari); ?></h2>
                             </div>
                             <div class="payment">
                                 <h4>Layanan Tambahan :</h4>
-                                <h2>Rp.999.999.999,00</h2>
+                                <h2>Rp.<?php echo ($pemesanan->harga_layanan*$pemesanan->jumlah_hari) ?></h2>
                             </div>
                             <div class="total">
                                 <h4>Total Pembayaran :</h4>
-                                <h2>Rp.999.999.999,00</h2>
+                                <h2>Rp.<?php echo (($pemesanan->harga*$pemesanan->jumlah_hari)+ ($pemesanan->harga_layanan*$pemesanan->jumlah_hari) )?></h2>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,29 @@
                 <div class="code">
                     <h3>Kode Pembayaran</h3>
                     <h4>Untuk melakukan pembayaran anda dapat melakukan pembayarnan dikasir dengan menyertakan kode berikut </h4>
-                    <h1>101</h1>
+                    <h1><?php 
+                        if($pemesanan->status_pemesanan=='Tervalidasi'){
+                            echo $pemesanan->kode_pembayaran; 
+                        } 
+                        elseif($pemesanan->status_pemesanan=='Belum Tervalidasi'){
+                            echo 'Pemesanan Gagal Diproses';
+                        }  
+                        else{
+                            echo 'Pemesanan Masih Diproses'; 
+                        }
+                    ?></h1>
                 </div>
             </article>
             <div class="content-btn">
-                <button style="background-color: #3252DF;"><a href="<?php echo base_url('cawal/tampilroombooking3') ?>">Continue to Book</a></button>
+                <?php
+                     if($pemesanan->status_pembayaran=='Tervalidasi') {?>
+                            <button style="background-color: #3252DF;"><a href="<?php echo base_url('cawal/tampilroombooking3') ?>">Continue to Book</a></button>
+                    <?php } 
+                        else{
+                            
+                        }  
+                ?>
+                
                 <button style="background-color: #5e5d5d;"><a href="<?php echo base_url('cawal/tampilstatus') ?>">Status</a></button>
                 <button style="background-color: #b5b5b5;"><a href="<?php echo base_url('cawal/tampilroomdetails') ?>">Cancel</a></button>
             </div>

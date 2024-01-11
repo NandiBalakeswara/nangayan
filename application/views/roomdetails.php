@@ -25,7 +25,7 @@
             <div class="ket">
             Bali, Indonesia
                 <article class="picture">
-                    <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
+                    <img src=" <?php echo base_url('berkas/'.$room->foto); ?>" alt="NangAyan Hotels">
                 </article>
                 <article class="frame">
                     <div class="desc" style="text-align: left;">
@@ -37,12 +37,13 @@
                     <div class="date">
                         <h3>Start Booking</h3>
                         <h2>Rp. <?php echo $room->harga; ?> Per Night</h2>
-                        <form action="" method="post">
+                        <form action="<?php echo base_url('cpemesanan/tampilroombooking1'); ?>" method="post">
+                            <input type="hidden" name="id_kamar" value="<?php echo $room->id_kamar; ?>">
                             <label for="">Pick a Date In</label>
-                            <input type="date" name="" id="">
+                            <input type="date" name="waktu_masuk" id="waktu_masuk">
                             <label for="">Pick a Date Out</label>
-                            <input type="date" name="" id="">
-                            <button type="submit"><a href="">Continue To Book</a></button>
+                            <input type="date" name="waktu_keluar" id="waktu_keluar">
+                            <button type="submit">Continue To Book</button>
                         </form>
                     </div>
                 </article>

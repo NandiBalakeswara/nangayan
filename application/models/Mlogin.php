@@ -16,10 +16,12 @@
 				$Username=$data->username;
 				$NamaLengkap=$data->nama_lengkap;
 				$id_pengguna=$data->id_pengguna;
+				$nomor_hp=$data->nomor_hp;
 				$session=array(
 					'username'=>$Username,
 					'nama_lengkap'=>$NamaLengkap,
-					'id_pengguna'=>$id_pengguna
+					'id_pengguna'=>$id_pengguna,
+					'nomor_hp'=>$nomor_hp
 					
 				);
 				if ($query->num_rows()>0)
