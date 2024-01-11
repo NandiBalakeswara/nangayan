@@ -24,6 +24,11 @@ class Cadmin extends CI_Controller {
 		$this->load->view('adminL');	
 	}
 
+	function tampiladminr()
+	{
+		$this->load->view('adminR');	
+	}
+
     public function tampiladminpesan()
     {
         $data['pemesanan'] = $this->madmin->tampildatapemesan();
