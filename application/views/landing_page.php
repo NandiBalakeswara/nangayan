@@ -32,36 +32,19 @@
               <div class="bonus">
                 All our room types are including complementary breakfast
               </div>
-              <article class="card">
-                <div class="content-description">
-                  <section>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                    <p>
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero aspernatur ad adipisci, 
-                      similique repudiandae laborum ex accusamus mollitia debitis nemo odio. Atque aliquid 
-                      nulla quis eveniet similique quam laborum iure?
-                    </p>
-                  </section>
-                </div> 
-                <div>
-                    <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                </div>
-              </article>
-              <article class="card">
-                <div class="content-description">
-                  <section>
-                    <h2>Lorem ipsum dolor sit amet.</h2>
-                    <p>
-                      Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero aspernatur ad adipisci, 
-                      similique repudiandae laborum ex accusamus mollitia debitis nemo odio. Atque aliquid 
-                      nulla quis eveniet similique quam laborum iure?
-                    </p>
-                  </section>
-                </div> 
-                <div>
-                  <img src="<?php echo base_url('assets/styles/image/logo2.png'); ?>" alt="NangAyan Hotels">
-                </div>
-              </article>
+              <?php foreach ($top_rooms as $room): ?>
+                  <article class="card">
+                      <div class="content-description">
+                          <section>
+                              <h2><?php echo $room->jenis_kamar; ?></h2>
+                              <p><?php echo $room->deskripsi_kamar; ?></p>
+                          </section>
+                      </div> 
+                      <div>
+                        <img src=" <?php echo base_url('berkas/'.$room->foto); ?>" alt="NangAyan Hotels">
+                      </div>
+                  </article>
+              <?php endforeach; ?>
             </div>
     </main>
     <?php include('footer.php'); ?>

@@ -1,9 +1,17 @@
 <?php
 	class Cawal extends CI_Controller
 	{
-		function tampilawal()
+
+		public function __construct()
 		{
-			$this->load->view('landing_page');	
+			parent :: __construct();
+			$this->load->model('mawal');
+		}
+
+		public function tampilawal()
+		{
+			$data['top_rooms'] = $this->mawal->getTopTwoRooms();
+			$this->load->view('landing_page', $data);
 		}	
 
 		function tampilroomdetails()
@@ -13,7 +21,8 @@
 
 		function tampilhomelogin()
 		{
-			$this->load->view('homelogin');	
+			$data['top_rooms'] = $this->mawal->getTopTwoRooms();
+			$this->load->view('homelogin',$data);	
 		}
 		
 		function tampilstatus()
