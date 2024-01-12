@@ -3,7 +3,7 @@
     <ul>
         <li><a href="<?php echo base_url('cawal/tampilhomelogin') ?>">Home</a></li>
         <li><a href="<?php echo base_url('crooms/tampilroomslogin') ?>">Rooms</a></li>
-        <li><a href="<?php echo base_url('cawal/tampilstatus'); ?>">Status</a></li>
+        <li><a href="<?php echo base_url('cstatus/showBookingStatus'); ?>">Status</a></li>
         <li><a href="#" style="cursor: default;"><?php echo $this->session->userdata('nama_lengkap'); ?></a></li>
         <a href="javascript:void(0)" onclick="logout();"><button>Logout</button></a>
     </ul>
