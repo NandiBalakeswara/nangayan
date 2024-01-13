@@ -29,14 +29,14 @@
 		{
 			$this->load->view('status');	
 		}
-		function tampilroombooking1()
-		{
-			$this->load->view('roombooking1');	
-		}
-		function tampilroombooking2()
-		{
-			$this->load->view('roombooking2');	
-		}
+		// function tampilroombooking1()
+		// {
+		// 	$this->load->view('roombooking1');	
+		// }
+		// function tampilroombooking2()
+		// {
+		// 	$this->load->view('roombooking2');	
+		// }
 		function tampilroombooking3()
 		{
 			$this->load->view('roombooking3');	

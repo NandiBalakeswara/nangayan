@@ -16,7 +16,7 @@ class Clayanan extends CI_Controller {
     {
         // Mengambil data dari formulir tambah layanan
         $data = array(
-            'jenis_layanan' => $this->input->post('jenis_layanan'),
+            'nama_layanan' => $this->input->post('nama_layanan'),
             'deskripsi_layanan' => $this->input->post('deskripsi_layanan'),
             'harga_layanan' => $this->input->post('harga_layanan')
         );
