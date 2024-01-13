@@ -26,8 +26,8 @@
                         <h4>Bali, Indonesia</h4>
                     </div>
                     <div class="right-info">
-                        <h3>Rp. <?php echo $kamar->harga; ?> Per Night</h3>
-                        <h3>Date <?php echo date('j', strtotime($waktu_masuk)) . ' - ' . date('j F', strtotime($waktu_keluar)); ?></h3>
+                        <h2>Rp. <?php echo $kamar->harga; ?> Per Night</h2>
+                        <h3><?php echo date('j', strtotime($waktu_masuk)) . ' - ' . date('j F', strtotime($waktu_keluar)); ?></h3>
                     </div>
                     </div>
                 </div>
@@ -50,18 +50,24 @@
                     <input type="hidden" name="id_kamar" value="<?php echo $kamar->id_kamar?>">
                     <div class="form-wrapper-info">
                         <label for="" name="nama_layanan">Layanan Tambahan</label> 
-                        <select>
-                            <option value="">Pilih Layanan Tambahan</option>
-                            <option value="Extra Bed">Extra Bed</option>
-                            <option value="Lunch">Lunch</option>
-                            <option value="Dinner">Dinner</option>
+                        <select name="id_layanan">
+                            <option value="3">Pilih Layanan Tambahan</option>
+                            <?php
+                                // Mengambil data dari tabel tblayanan
+                                $layananList = $this->db->get('tblayanan')->result();
+
+                                foreach ($layananList as $layanan) {
+                                    echo '<option value="' . $layanan->id_layanan . '">' . $layanan->nama_layanan . '</option>';
+                                }
+                            ?>
                         </select>
+
                     </div>
                 </form>
             </article>
             <div class="content-btn">
-                <button style="background-color: #3252DF;"onclick="submitForm()">Continue to Book</a></button>
-                <button style="background-color: #b5b5b5;"><a href="<?php echo base_url('cawal/tampilroomdetails') ?>">Cancel</a></button>
+                <button style="background-color: #3252DF;"onclick="submitForm()">Continue to Book</button>
+                <a href="<?php echo base_url('crooms/tampilroomslogin') ?>"><button style="background-color: #b5b5b5;">Cancel</button></a>
             </div>
         </div>
     </main>

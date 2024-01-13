@@ -16,13 +16,21 @@
 		}
         function simpandata()
 		{
-			$data=$_POST;
-			$data['kode_pembayaran']=$this->mpemesanan->getkodepembayaran();
-			$nama_layanan=$this->input->post('nama_layanan');
-			$data['id_layanan']=$this->mpemesanan->getidlayanan($nama_layanan);
-			$this->mpemesanan->simpandata($data);
-			redirect('cpemesanan/tampilroombooking2');	
+			$data = $_POST;
+			$data['kode_pembayaran'] = $this->mpemesanan->getkodepembayaran();
+			$id_layanan = $this->input->post('id_layanan');
+
+			if (!empty($id_layanan)) {
+				$data['id_layanan'] = $id_layanan;
+				$this->mpemesanan->simpandata($data);
+				redirect('cpemesanan/tampilroombooking2');
+			} else {
+				// Tindakan jika id_layanan kosong (misalnya, menampilkan pesan kesalahan)
+				echo 'Error: Pilih Layanan Tambahan terlebih dahulu.';
+			}
 		}
+
+
 		function tampilroombooking2()
 		{
 			$id_pengguna=$this->session->userdata('id_pengguna');

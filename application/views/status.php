@@ -14,20 +14,33 @@
     <main>
         <div class="content">
             <h1>Booking Status</h1>
-            <div class="bonus">
-            You can see your booking status below           
-            </div>
+            
             <?php
             if(empty($data))
                         {
-                            echo "Data Kosong";	
+                            ?>
+                            <img width="256" height="256" src="https://img.icons8.com/fluency/256/fail.png" alt="fail"/>
+                            <h2>You haven't placed any orders so far.</h2>
+                            <div class="NO">
+                                <div class="content-empty">
+                                    <div class="empty">
+                                    <a href="<?php echo base_url('crooms/tampilroomslogin') ?>"><button style="background-color: #E0B973;">Book Now</button></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
                         }
                         else
                         {?>
+            <div class="bonus">
+            You can see your booking status below           
+            </div>
             <article class="BS">
                 <div>
                     <img src="<?php echo base_url('berkas/'.$data->foto); ?>" alt="NangAyan Hotels">
-                    <h2><?php echo $data->jenis_kamar; ?></h2>
+                    <div class="status-kamar">
+                        <h2><?php echo $data->jenis_kamar; ?></h2>
+                    </div>
                     <h4>Bali, Indonesia</h4>
                 </div>
                     <form action="" class="content-form">
@@ -64,12 +77,7 @@
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Harga</label>
-                                <input type="text" name="harga" id="" disabled value="
-                                    <?php
-                                        // echo $data->harga; 
-                                        $a=($data->harga)+($data->harga_layanan);
-                                        echo $a
-                                    ?>">
+                                <input type="text" name="harga" id="" disabled value="Rp.<?php $a=($data->harga)+($data->harga_layanan);  echo $a ?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Nomor Kamar</label>
@@ -88,7 +96,7 @@
                         </div>
                         <div class="form-group">
                             <button style="background-color: #E0B973;"><a href="<?php echo base_url('cawal/tampilhomelogin') ?>">Home</a></button>
-                            <button style="background-color: #3252DF;"><a href="<?php echo base_url('cawal/tampilroombooking2') ?>">Payment Code</a></button>
+                            <button style="background-color: #3252DF;"><a href="<?php echo base_url('cpemesanan/tampilroombooking2') ?>">Payment Code</a></button>
                         </div>
                     </form>
             </article>     

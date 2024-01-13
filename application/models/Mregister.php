@@ -17,7 +17,6 @@
 				$data=$_POST;
 				$data['level']="User";
 				$this->db->insert('tbpengguna', $data);
-				$this->session->set_flashdata('pesan','Data sudah disimpan');	
 				redirect('clogin/formlogin');
 			 }
 

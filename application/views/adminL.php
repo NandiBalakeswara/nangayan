@@ -73,14 +73,7 @@
                     <form action="<?= base_url('Clayanan/addlayanan') ?>" method="POST"> <!-- form -->
                             <div class="form-wrapper-rooms">
                                 <label for="nama_layanan">Jenis Layanan</label> 
-                                <select name="nama_layanan" id="nama_layanan">
-                                    <option value="">Pilih Jenis Layanan</option>
-                                    <option value="Ekstra Bed">Ekstra Bed</option>
-                                    <option value="Breakfast">Breakfast</option>
-                                    <option value="Lunch">Lunch</option>
-                                    <option value="Dinner">Dinner</option>
-                                    <option value="Tidak Menambahkan Layanan">Tidak Menambahkan Layanan</option>
-                                </select>
+                                <input type="text" name="nama_layanan">
                                 <label for="deskripsi-layanan">Deskripsi</label>
                                 <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" >
                                 <label for="harga">Harga</label>
@@ -106,14 +99,7 @@
                         <input type="hidden" name="id_layanan" value="<?php echo $data->id_layanan; ?>">
                             <div class="form-wrapper-rooms">
                                 <label for="nama_layanan">Jenis Layanan</label> 
-                                <select name="nama_layanan" id="nama_layanan">
-                                    <option value="">Pilih Jenis Layanan</option>
-                                    <option value="Ekstra_Bed" <?php echo ($data->nama_layanan == 'Ekstra Bed') ? 'selected' : ''; ?> >Ekstra Bed</option>
-                                    <option value="Breakfast" <?php echo ($data->nama_layanan == 'Breakfast') ? 'selected' : ''; ?> >Breakfast</option>
-                                    <option value="Lunch" <?php echo ($data->nama_layanan == 'Lunch') ? 'selected' : ''; ?> >Lunch</option>
-                                    <option value="Dinner" <?php echo ($data->nama_layanan == 'Dinner') ? 'selected' : ''; ?> >Dinner</option>
-                                    <option value="Tidak Menambahkan Layanan">Tidak Menambahkan Layanan</option>
-                                </select>
+                                <input type="text" name="nama_layanan" value="<?php echo $data->nama_layanan; ?>">
                                 <label for="deskripsi_layanan">Deskripsi</label>
                                 <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>">
                                 <label for="harga">Harga</label>
@@ -144,13 +130,7 @@
                             <div class="form-wrapper-rooms">
                             <input type="hidden" name="id_layanan" disable value="<?php echo $data->id_layanan; ?>">
                             <label for="tambah-nama_layanan">Jenis Layanan</label> 
-                                <select name="nama_layanan" id="tambah-nama_layanan">
-                                    <option disabled value="">Pilih Jenis Layanan</option>
-                                    <option disabled value="Ekstra Bed" <?php echo ($data->nama_layanan == 'Ekstra_Bed') ? 'selected' : ''; ?> >Ekstra Bed</option>
-                                    <option disabled value="Breakfast" <?php echo ($data->nama_layanan == 'Breakfast') ? 'selected' : ''; ?>>Breakfast</option>
-                                    <option disabled value="Lunch" <?php echo ($data->nama_layanan == 'Lunch') ? 'selected' : ''; ?>>Lunch</option>
-                                    <option disabled value="Dinner" <?php echo ($data->nama_layanan == 'Dinner') ? 'selected' : ''; ?>>Dinner</option>
-                                </select>
+                                <input type="text" name="nama_layanan" disabled value="<?php echo $data->nama_layanan; ?>">
                                 <label for="tambah-deskripsi-layanan">Deskripsi</label>
                                 <input type="text" name="deskripsi_layanan" id="tambah-deskripsi_layanan" disabled value="<?php echo $data->deskripsi_layanan; ?>">
                                 <label for="tambah-harga">Harga</label>

@@ -72,12 +72,7 @@
                             <div class="form-wrapper-rooms">
                                 <input type="hidden" name="id_kamar" id="id_kamar"/>
                                 <label for="">Jenis Kamar</label>
-                                <select name="jenis_kamar" id="jenis_kamar">
-                                    <option value="">Pilih</option>
-                                    <option value="Standard Room">Standard Room</option>
-                                    <option value="Superior Room">Superior Room</option>
-                                    <option value="Twin Room">Twin Room</option>
-                                </select>
+                                <input type="text" name="jenis_kamar">
                                 <label for="">Deskripsi</label>
                                 <input type="text" name="deskripsi_kamar" id="deskripsi_kamar">
                                 <label for="">Harga</label>
@@ -107,12 +102,7 @@
                                 <div class="form-wrapper-rooms">
                                 <input type="hidden" name="id_kamar" value="<?php echo $data->id_kamar; ?>"/>
                                 <label for="">Jenis Kamar</label>
-                                <select name="jenis_kamar">
-                                    <option value="">Pilih</option>
-                                    <option value="Standard Room" <?php echo ($data->jenis_kamar == 'Standard Room') ? 'selected' : ''; ?>>Standard Room</option>
-                                    <option value="Superior Room" <?php echo ($data->jenis_kamar == 'Superior Room') ? 'selected' : ''; ?>>Superior Room</option>
-                                    <option value="Twin Room" <?php echo ($data->jenis_kamar == 'Twin Room') ? 'selected' : ''; ?>>Twin Room</option>
-                                </select>
+                                <input type="text" name="jenis_kamar" value="<?php echo $data->jenis_kamar; ?>">
                                 <label for="">Deskripsi</label>
                                 <input type="text" name="deskripsi_kamar" value="<?php echo $data->deskripsi_kamar; ?>">
                                 <label for="">Harga</label>

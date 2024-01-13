@@ -44,7 +44,7 @@
                             echo $pemesanan->kode_pembayaran; 
                         } 
                         elseif($pemesanan->status_pemesanan=='Belum Tervalidasi'){
-                            echo 'Pemesanan Gagal Diproses';
+                            echo 'Pemesanan Gagal Diproses Kamar Penuh';
                         }  
                         else{
                             echo 'Pemesanan Masih Diproses'; 
@@ -55,15 +55,16 @@
             <div class="content-btn">
                 <?php
                      if($pemesanan->status_pembayaran=='Tervalidasi') {?>
-                            <button style="background-color: #3252DF;"><a href="<?php echo base_url('cawal/tampilroombooking3') ?>">Continue to Book</a></button>
+                        <a href="<?php echo base_url('cawal/tampilroombooking3') ?>"><button style="background-color: #3252DF;">Continue to Book</button></a>
                     <?php } 
                         else{
                             
                         }  
                 ?>
                 
-                <button style="background-color: #5e5d5d;"><a href="<?php echo base_url('cawal/tampilstatus') ?>">Status</a></button>
-                <button style="background-color: #b5b5b5;"><a href="<?php echo base_url('cawal/tampilroomdetails') ?>">Cancel</a></button>
+                <a href="<?php echo base_url('cstatus/showBookingStatus') ?>"><button style="background-color: #5e5d5d;">Status</button></a>
+                <a href="<?php echo base_url('cawal/tampilhomelogin') ?>"><button style="background-color: #E0B973;">Home</button></a>
+                
             </div>
         </div>
     </main>

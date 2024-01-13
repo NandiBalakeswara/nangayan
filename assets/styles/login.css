@@ -111,6 +111,7 @@ label{
     letter-spacing: 0.2rem;
     transition: 0.2s ease-out;
     margin-top: 5px;
+    cursor: pointer;
 }
 
 .signin-btn:hover{
@@ -124,6 +125,7 @@ label{
     border-radius: 8px;
     font-size: medium;
     letter-spacing: 0.2rem;
+    cursor: pointer;
 }
 
 .input-container.credentials,

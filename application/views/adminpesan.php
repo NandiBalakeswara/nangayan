@@ -129,7 +129,7 @@
                         <div class="form-group">   
                             <div class="form-wrapper">
                                 <label for="">Kode Pembayaran</label>
-                                <input type="text" name="kode_pembayaran" id="kode_pembayaran"  value="<?php echo $pesan->kode_pembayaran; ?>">
+                                <input type="text" name="kode_pembayaran" id="kode_pembayaran"   value="<?php echo $pesan->kode_pembayaran; ?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Nomor Kamar</label>

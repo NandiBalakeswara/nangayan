@@ -12,8 +12,8 @@
             <img src="<?php echo base_url('assets/styles/image/logotrsp.png'); ?>" alt="NangAyan Hotels" class="logo">
             <ul>
                 <li><a href="<?php echo base_url('cawal/tampilhomelogin') ?>">Home</a></li>
-                <li><a href="<?php echo base_url('cawal/tampilroomslogin') ?>">Rooms</a></li>
-                <li><a href="<?php echo base_url('cawal/tampilstatus'); ?>">Status</a></li>
+                <li><a href="<?php echo base_url('crooms/tampilroomslogin') ?>">Rooms</a></li>
+                <li><a href="<?php echo base_url('cstatus/showBookingStatus'); ?>">Status</a></li>
                 <li><a href="#" style="cursor: default;"><?php echo $this->session->userdata('nama_lengkap'); ?></a></li>
                 <a href="javascript:void(0)" onclick="logout();"><button>Logout</button></a>
             </ul>
@@ -40,9 +40,9 @@
                         <form action="<?php echo base_url('cpemesanan/tampilroombooking1'); ?>" method="post">
                             <input type="hidden" name="id_kamar" value="<?php echo $room->id_kamar; ?>">
                             <label for="">Pick a Date In</label>
-                            <input type="date" name="waktu_masuk" id="waktu_masuk">
+                            <input type="date" name="waktu_masuk" id="waktu_masuk" required>
                             <label for="">Pick a Date Out</label>
-                            <input type="date" name="waktu_keluar" id="waktu_keluar">
+                            <input type="date" name="waktu_keluar" id="waktu_keluar" required>
                             <button type="submit">Continue To Book</button>
                         </form>
                     </div>

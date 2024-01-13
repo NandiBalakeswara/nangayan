@@ -14,7 +14,7 @@
         </div>
         <div class="content">
             <p class="home" ><a href="<?php echo base_url('cawal/tampilawal'); ?>">X</a></p>
-            <form action="<?php echo base_url('cawal/tampilawal'); ?>" name="formregister" id="formregister" method="post">
+            <form action="<?php echo base_url('cregister/simpandata'); ?>" name="formregister" id="formregister" method="post">
                 <section class="copy">
                     <h2>Sign Up</h2>
                     <input type="hidden" name="id_pengguna" id="id_pengguna">
