@@ -41,7 +41,7 @@
                     <h2><?php echo $room->jenis_kamar; ?></h2>
                     </div>
                     <div class="content-botton">
-                        <a href="<?php echo base_url('crooms/tampilroomdetails/' . $room->id_kamar); ?>"><button type="button">Rp. <?php echo $room->harga; ?>/Night</button></a>                    
+                        <a href="<?php echo base_url('crooms/tampilroomdetails/' . $room->id_kamar); ?>"><button type="button">Rp.<?php $harga=$room->harga; $harga_formatted = number_format($harga, 0, ',', '.'); echo $harga_formatted ?>/Night</button></a>                    
                     </div>
                 </article>
             <?php } ?>

@@ -26,7 +26,7 @@
                         <h4>Bali, Indonesia</h4>
                     </div>
                     <div class="right-info">
-                        <h2>Rp. <?php echo $kamar->harga; ?> Per Night</h2>
+                        <h2>Rp. <?php $total=$kamar->harga; $total_formatted = number_format($total, 0, ',', '.'); echo $total_formatted ?> Per Night</h2>
                         <h3><?php echo date('j', strtotime($waktu_masuk)) . ' - ' . date('j F', strtotime($waktu_keluar)); ?></h3>
                     </div>
                     </div>

@@ -2,7 +2,6 @@
 class Mlayanan extends CI_Model{
     function tampiladminl()
     {
-        $sql="select * from  tblayanan ";
         $query=$this->db->get('tblayanan');
         if($query->num_rows()>0)
         {

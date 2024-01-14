@@ -2,7 +2,6 @@
 class Mpengguna extends CI_Model{
 function tampiladminp()
 {
-    $sql="select * from  tbpengguna ";
     $query=$this->db->get('tbpengguna');
     if($query->num_rows()>0)
     {

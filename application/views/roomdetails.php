@@ -36,7 +36,7 @@
                     </div>
                     <div class="date">
                         <h3>Start Booking</h3>
-                        <h2>Rp. <?php echo $room->harga; ?> Per Night</h2>
+                        <h2>Rp. <?php $total=$room->harga; $total_formatted = number_format($total, 0, ',', '.'); echo $total_formatted ?> Per Night</h2>
                         <form action="<?php echo base_url('cpemesanan/tampilroombooking1'); ?>" method="post">
                             <input type="hidden" name="id_kamar" value="<?php echo $room->id_kamar; ?>">
                             <label for="">Pick a Date In</label>
