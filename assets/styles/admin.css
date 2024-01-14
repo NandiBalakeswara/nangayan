@@ -67,11 +67,12 @@ aside .menu h2:hover{
 }
 
 aside .menu .logout{
-    margin-top: 5.5rem;
+    margin-top: 3rem;
 }
 
 aside .menu .logout h2{
     color: #D85050;
+    margin: 0;
 }
 
 .content{
@@ -176,6 +177,23 @@ aside .menu .logout h2{
 .content .table table tbody tr th button img{
     padding: 5px;
     object-fit: contain;
+}
+
+.content .chart {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.content .chart .isiChart{
+    border-radius: 25px;
+    background-color: #f0f1f5;
+    padding: 10px;
+    color: #14274A;
+    overflow: auto;
+    white-space: nowrap;
+    width: 35vw;
+    height: 70vh;
 }
 
 

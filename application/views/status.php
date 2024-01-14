@@ -77,7 +77,12 @@
                         <div class="form-group">
                             <div class="form-wrapper">
                                 <label for="">Harga</label>
-                                <input type="text" name="harga" id="" disabled value="Rp.<?php $a=($data->harga)+($data->harga_layanan);  echo $a ?>">
+                                <input type="text" name="harga" id="" disabled value="Rp.<?php 
+                                        $total = (($data->harga) + ($data->harga_layanan)) * $data->jumlah_hari;
+                                        $total_formatted = number_format($total, 0, ',', '.');
+                                        
+                                        echo $total_formatted;
+                                    ?>">
                             </div>
                             <div class="form-wrapper">
                                 <label for="">Nomor Kamar</label>

@@ -2,7 +2,7 @@
     class Madmin extends CI_Model {
         
         public function tampildatapemesan() {
-            $this->db->select('tbpemesanan.*, tbpengguna.nama_lengkap, tbkamar.jenis_kamar, tblayanan.nama_layanan');
+            $this->db->select('tbpemesanan.*, tbpengguna.nama_lengkap, tbkamar.jenis_kamar, tbkamar.harga, tblayanan.nama_layanan,, tblayanan.harga_layanan, DATEDIFF(waktu_keluar, waktu_masuk) AS jumlah_hari');
             $this->db->from('tbpemesanan');
             $this->db->join('tbpengguna', 'tbpengguna.id_pengguna = tbpemesanan.id_pengguna');
             $this->db->join('tbkamar', 'tbkamar.id_kamar = tbpemesanan.id_kamar');

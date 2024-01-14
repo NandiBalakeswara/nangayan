@@ -41,7 +41,7 @@
                         <h2><?php echo $room->jenis_kamar; ?></h2>
                     </div>
                     <div class="content-botton">
-                        <button type="button"><a href="<?php echo base_url('clogin/formlogin'); ?>">Rp. <?php echo $room->harga; ?>/Night</a></button>
+                        <a href="<?php echo base_url('clogin/formlogin'); ?>"><button type="button">Rp. <?php echo $room->harga; ?>/Night</button></a>                    
                     </div>
                 </article>
             <?php } ?>

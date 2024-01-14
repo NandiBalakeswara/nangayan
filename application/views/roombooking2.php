@@ -23,15 +23,26 @@
                         <div class="sub-total">
                             <div class="payment">
                                 <h4>Sub Total Kamar :</h4>
-                                <h2>Rp.<?php echo ($pemesanan->harga*$pemesanan->jumlah_hari); ?></h2>
+                                <h2>Rp.<?php $harga=($pemesanan->harga*$pemesanan->jumlah_hari);
+                                        $harga_formatted = number_format($harga, 0, ',', '.'); 
+                                        
+                                        echo $harga_formatted?>
+                                </h2>
                             </div>
                             <div class="payment">
                                 <h4>Layanan Tambahan :</h4>
-                                <h2>Rp.<?php echo ($pemesanan->harga_layanan*$pemesanan->jumlah_hari) ?></h2>
+                                <h2>Rp.<?php $hargal = ($pemesanan->harga_layanan*$pemesanan->jumlah_hari);
+                                        $hargal_formatted  = number_format($hargal, 0, ',', '.');
+                                        echo $hargal ?>
+                                </h2>
                             </div>
                             <div class="total">
                                 <h4>Total Pembayaran :</h4>
-                                <h2>Rp.<?php echo (($pemesanan->harga*$pemesanan->jumlah_hari)+ ($pemesanan->harga_layanan*$pemesanan->jumlah_hari) )?></h2>
+                                <h2>Rp.<?php $total = ($pemesanan->harga * $pemesanan->jumlah_hari) + ($pemesanan->harga_layanan * $pemesanan->jumlah_hari);
+                                    $total_formatted = number_format($total, 0, ',', '.');
+
+                                    echo $total_formatted;?>
+                                </h2>
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
         <img src="<?php echo base_url('assets/styles/image/logotrsp.png'); ?>" alt="NangAyan Hotels" class="logo">
     </div>
     <div class="menu">
+        <a href="<?php echo base_url('cadmind/tampiladmind') ?>"><h2>Dashboard</h2></a>
         <a href="<?php echo base_url('cpengguna/tampiladminp') ?>"><h2>Pengguna</h2></a>
         <a href="<?php echo base_url('ckamar/tampiladmink') ?>"><h2>Kamar</h2></a>
         <a href="<?php echo base_url('clayanan/tampiladminl') ?>"><h2>Layanan</h2></a>

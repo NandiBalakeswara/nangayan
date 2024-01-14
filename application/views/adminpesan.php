@@ -29,6 +29,7 @@
                             <th>Status Pemesanan</th>
                             <th>Status Pembayaran</th>
                             <th>Kode Pembayaran</th>
+                            <th>Total Pembayaran</th>
                             <th>Nomor Kamar</th>
                             <th>Action</th>
                         </tr>
@@ -49,6 +50,14 @@
                                     <td><?php echo $pesan->status_pemesanan; ?></td>
                                     <td><?php echo $pesan->status_pembayaran; ?></td>
                                     <td><?php echo $pesan->kode_pembayaran; ?></td>
+                                    <td>Rp.
+                                        <?php 
+                                        $total = (($pesan->harga) + ($pesan->harga_layanan)) * $pesan->jumlah_hari;
+                                        $total_formatted = number_format($total, 0, ',', '.');
+                                        
+                                        echo $total_formatted;
+                                        ?>
+                                    </td>
                                     <td><?php echo $pesan->nomor_kamar; ?></td>
                                     <th>
                                         <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
