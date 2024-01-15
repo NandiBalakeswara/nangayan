@@ -113,7 +113,13 @@
                     const ctx = document.getElementById('pie').getContext('2d');
                     const config = {
                         type: 'pie',
-                        data: pieData
+                        data: pieData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false, // Menonaktifkan aspek rasio default
+                            width: 400, // Menentukan lebar grafik
+                            height: 400 // Menentukan tinggi grafik
+                        }
                     };
 
                     const pieChart = new Chart(ctx, config);

@@ -18,6 +18,9 @@
                 <section class="copy">
                     <h2>Sign Up</h2>
                     <input type="hidden" name="id_pengguna" id="id_pengguna">
+                    <p id="error-message" class="<?php echo ($this->session->flashdata('pesan')) ? 'cant_login' : ''; ?>">
+                        <?php echo $this->session->flashdata('pesan'); ?>
+                    </p> 
                     <div class="input-container name">
                         <label for="nama_lengkap">Nama Lengkap</label>
                         <input type="text" name="nama_lengkap" id="namalengkap" required>

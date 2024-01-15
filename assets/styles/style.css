@@ -856,6 +856,10 @@ footer{
     bottom: 0;
 }
 
+footer p a {
+    color: white;
+}
+
 footer .address{
     flex: 1;
     flex-grow: 1;
