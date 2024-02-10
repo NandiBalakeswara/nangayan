@@ -49,8 +49,9 @@
                 </div>
                 <div class="code">
                     <h3>Kode Pembayaran</h3>
-                    <h4>Untuk melakukan pembayaran anda dapat melakukan pembayarnan dikasir dengan menyertakan kode berikut </h4>
-                    <h1><?php 
+                    <h4>Untuk melakukan pembayaran anda dapat melakukan transfer ke nomor rekening dibawah atau melakukan pembayaran dikasir dengan menyertakan kode berikut </h4>
+                    <p style="margin: 1px;display: flex;width: 25rem;">No. Rek Pembayaran : 70001081338665572</p>
+                    <p style="margin: 1px;display: flex;width: 25rem;">No. Telp Admin : <a href="http://wa.me/62881037551260" style="color: 14274A; text-decoration: none;">+62 881-0375-51260</a></p>                    <h1><?php 
                         if($pemesanan->status_pemesanan=='Tervalidasi'){
                             echo $pemesanan->kode_pembayaran; 
                         } 

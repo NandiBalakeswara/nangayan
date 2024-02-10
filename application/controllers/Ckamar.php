@@ -31,10 +31,10 @@ class Ckamar extends CI_Controller
 			$this->mkamar->simpandata($data);
 			redirect('ckamar/tampiladmink');	
 		}
-		function hapusdata(){
-			$data=$_POST;
-			$this->mkamar->hapusdata($data);
-			redirect('ckamar/tampiladmink');	
-		}
+	function hapusdata(){
+		$data=$_POST;
+		$this->mkamar->hapusdata($data);
+		redirect('ckamar/tampiladmink');	
+	}
 }
 ?>

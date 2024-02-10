@@ -799,12 +799,13 @@ main{
     align-items: center;
     text-align: center;
     width: 25rem;
-    height: 12rem;
+    height: 13rem;
 }
 
 .BS .code h1{
     font-family: 'Montserrat', sans-serif;
     font-size: x-large;
+    margin-top: 10px;
 }
 
 .BS .code h2{
