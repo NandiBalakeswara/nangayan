@@ -9,7 +9,10 @@
 <body>
     <header>
         <div class="jumbotron">
-          <?php include('navbar.php'); ?>
+            <div class="bg">
+                <img src="<?php echo base_url('assets/styles/hotel_bg4.jpg'); ?>" alt="">
+            </div>
+            <?php include('navbar.php'); ?>
                 <div class="title">
                     <p class="welcome">
                         Welcome To

@@ -100,8 +100,8 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <button style="background-color: #E0B973;"><a href="<?php echo base_url('cawal/tampilhomelogin') ?>">Home</a></button>
-                            <button style="background-color: #3252DF;"><a href="<?php echo base_url('cpemesanan/tampilroombooking2') ?>">Payment Code</a></button>
+                        <a href="<?php echo base_url('cawal/tampilhomelogin') ?>"><button type="button" style="background-color: #E0B973;">Home</button></a>
+                        <a href="<?php echo base_url('cpemesanan/tampilroombooking2') ?>"><button type="button" style="background-color: #3252DF;">Payment Code</button></a>
                         </div>
                     </form>
             </article>     
