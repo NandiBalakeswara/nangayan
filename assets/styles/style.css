@@ -12,17 +12,52 @@ a{
 
 .jumbotron {
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     /* background-image: url('hotel_bg4.jpg'); */
     /* background-size: cover;
     background-position: center; */
 }
 
+.jumbotron .bg {
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    opacity: 0; /* Mulai dengan opasitas 0 */
+    transition: opacity 0.5s ease; /* Tambahkan transisi opasitas */
+}
+
+.jumbotron .bg.active {
+    opacity: 1; /* Saat aktif, ubah opasitas menjadi 1 */
+}
+
+
 .jumbotron .bg img{
     width: 100%;
-    height: 80vh;
+    height: 85vh;
     object-fit: cover;
     background-position: center;
+}
+
+.jumbotron .navigation{
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.jumbotron .navigation .btn{
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.jumbotron .navigation .btn.active{
+    background-color: #F5F6F8;
 }
 
 .navbar{
