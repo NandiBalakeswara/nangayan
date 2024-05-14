@@ -25,7 +25,20 @@
             <div class="ket">
             Bali, Indonesia
                 <article class="picture">
-                    <img src=" <?php echo base_url('berkas/'.$room->foto); ?>" alt="NangAyan Hotels">
+                    <div class="bg active">
+                        <img src="<?php echo base_url('assets/styles/hotel_bg4.jpg'); ?>" alt="Hotels">
+                    </div>
+                    <div class="bg">
+                        <img src="<?php echo base_url('assets/styles/SuperiorRoom10.jpg'); ?>" alt="Hotels">
+                    </div>
+                    <div class="bg">
+                        <img src="<?php echo base_url('assets/styles/Bathroom.jpg'); ?>" alt="Hotels">
+                    </div>
+                    <div class="navigation">
+                        <div class="btn active"></div>
+                        <div class="btn"></div>
+                        <div class="btn"></div>
+                    </div>
                 </article>
                 <article class="frame">
                     <div class="desc" style="text-align: left;">
@@ -57,6 +70,66 @@
                 window.open("<?php echo base_url(); ?>clogin/logout", "_self");
             }
         }
+
+        var slides = document.querySelectorAll('.bg');
+        var btns = document.querySelectorAll('.btn');
+        let currentSlide = 0; 
+        var sliderAuto;
+
+        // Manual Navigation
+        var manualNav = function(manual){
+            slides.forEach((slide) => {
+                slide.style.opacity = 0; 
+                slide.classList.remove('active');
+
+                btns.forEach((btn)=>{
+                    btn.classList.remove('active');
+                });
+            });
+
+            slides[manual].style.opacity = 1; 
+            slides[manual].classList.add('active');
+            btns[manual].classList.add('active');
+
+            // Reset interval untuk memulai otomatis dari awal
+            clearInterval(sliderAuto);
+            startSliderAuto();
+        }
+
+        btns.forEach((btn, i) => {
+            btn.addEventListener("click", () => {
+                manualNav(i);
+                currentSlide = i;
+            });
+        });
+
+        // auto image slider (jangan dipake kalo mau pake manual)
+        function startSliderAuto() {
+            sliderAuto = setInterval(() => {
+                slides.forEach((slide) => {
+                    slide.style.opacity = 0; 
+                    slide.classList.remove('active');
+
+                    btns.forEach((btn)=>{
+                        btn.classList.remove('active');
+                    });
+                });
+
+                currentSlide++;
+
+                if (currentSlide >= slides.length) {
+                    currentSlide = 0;
+                }
+
+                slides[currentSlide].style.opacity = 1; 
+                slides[currentSlide].classList.add('active');
+                btns[currentSlide].classList.add('active');
+            }, 10000); // interval ganti gambar dalam ms
+        }
+
+        // Memulai proses otomatis saat halaman dimuat
+        startSliderAuto();
+
         </script>
     </body>
 </html>

@@ -15,6 +15,9 @@
             </div>
             <div class="title">
                 <h1>Pengguna</h1>
+                <div class="search">
+                    <input type="search" placeholder="Cari Nama Pengguna">
+                </div>
             </div>
             <div class="table">
                 <table>

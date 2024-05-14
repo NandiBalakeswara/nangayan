@@ -13,7 +13,7 @@
                 <img src="<?php echo base_url('assets/styles/hotel_bg4.jpg'); ?>" alt="Hotels">
             </div>
             <div class="bg">
-                <img src="<?php echo base_url('assets/styles/hotel_bg.png'); ?>" alt="Hotels">
+                <img src="<?php echo base_url('assets/styles/hotel_bg5.jpg'); ?>" alt="Hotels">
             </div>
             <div class="bg">
                 <img src="<?php echo base_url('assets/styles/hotel_bg2.png'); ?>" alt="Hotels">

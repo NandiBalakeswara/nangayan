@@ -15,8 +15,11 @@
             </div>
             <div class="title">
                 <h1>Kamar</h1>
+                <div class="search">
+                    <input type="search" placeholder="Cari Nama Pengguna">
+                </div>
                 <div class="btn">
-                    <button id="myBtn-add">+ Tambah Kamar</button>
+                    <button id="myBtn-add">+</button>
                 </div>
             </div>
             <div class="table">

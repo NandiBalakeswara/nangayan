@@ -59,7 +59,16 @@
                     const ctx =document.getElementById(chartType).getContext('2d')
                     const config = {
                         type: chartType,
-                        data: chartData
+                        data: chartData,
+                        options: { // Properti options untuk mengatur tinggi chart
+                            maintainAspectRatio: false, // Mengizinkan chart untuk menyesuaikan tinggi sesuai kebutuhan
+                            responsive: true, // Mengizinkan chart untuk merespons perubahan ukuran layar
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
                     }
                     switch(chartType){
                         // case 'pie':
