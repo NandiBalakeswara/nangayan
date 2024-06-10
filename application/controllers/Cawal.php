@@ -12,6 +12,7 @@
 		{
 			$data['top_rooms'] = $this->mawal->getTopTwoRooms();
 			$this->load->view('landing_page', $data);
+			
 		}	
 
 		function tampilroomdetails()
@@ -21,8 +22,11 @@
 
 		function tampilhomelogin()
 		{
+			
+			$this->mawal->validasi();
 			$data['top_rooms'] = $this->mawal->getTopTwoRooms();
-			$this->load->view('homelogin',$data);	
+			$this->load->view('homelogin',$data);
+			
 		}
 		
 		function tampilroombooking3()

@@ -11,6 +11,8 @@
 
         function tampiladmind()
         {
+            $this->load->model('mawal');
+			$this->mawal->validasi();
             $this->load->view('admind');	
         }
 
