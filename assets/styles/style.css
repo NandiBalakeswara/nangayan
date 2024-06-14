@@ -502,7 +502,7 @@ main{
 
 .picture {
     width: 100%;
-    height: 380px;
+    height: 100%;
     min-width: 300px;
     display: flex;
     flex-direction: row;
@@ -559,6 +559,28 @@ main{
     width: 100%;
     object-fit: cover;
     object-position: center;
+}
+
+.picture .rooms_img_left{
+    padding: 5px;
+    flex: 2;
+}
+
+.picture .rooms_img_right{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.picture .rooms_img_right .rooms_img{
+    padding: 5px;
+    width: 100%;
+}
+
+.picture .rooms_img_right .rooms_img img{
+    object-fit: cover;
+    object-position: center;
+    height: 15.2rem;
 }
 
 .frame {
@@ -655,6 +677,7 @@ main{
     gap: 1.5rem;
     font-family: 'Montserrat', sans-serif;
     color: #14274A;
+    overflow: hidden;
 }
 
 .BS img{
@@ -913,6 +936,129 @@ main{
     font-weight: 200;
     height: 1px;
     text-align: justify;
+}
+
+/* .BS img{
+    flex: 1;
+    width: 100%;
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    border-radius: 7px;
+} */
+
+/* .BS .slider-container .bg {
+    position: absolute;
+    width: 100%;
+    height: 85vh;
+    opacity: 0; Mulai dengan opasitas 0
+    transition: opacity 0.5s ease; Tambahkan transisi opasitas
+    flex: 1;
+    width: 90%;
+    height: 20rem;
+    object-fit: cover;
+    object-position: center;
+    margin: 0;
+    border-radius: 7px;
+    opacity: 0; Mulai dengan opasitas 0
+    transition: opacity 0.5s ease; Tambahkan transisi opasitas
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+/* .BS .slider-container .bg.active {
+    opacity: 1; Saat aktif, ubah opasitas menjadi 1
+    z-index: 1;
+}
+
+
+.BS .slider-container .bg img{
+    width: 100%;
+    height: 85vh;
+    height: 20rem;
+    object-fit: cover;
+    background-position: center;
+}
+
+.BS .slider-container .navigation{
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: 1rem;
+    left: 29%;
+    transform: translateX(-50%);
+}
+
+.BS .slider-container .navigation .btn{
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.BS .slider-container .navigation .btn.active{
+    background-color: #F5F6F8;
+} */
+
+.BS .bg-container {
+    position: relative;
+    width: 30rem;
+    height: 20rem;
+    display: flex;
+}
+
+.BS .bg {
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Mulai dengan opasitas 0 */
+    transition: opacity 0.5s ease; /* Tambahkan transisi opasitas */
+    border-radius: 7px;
+    position: absolute; /* Tetap menggunakan position absolute untuk layering */
+    top: 0;
+    left: 0;
+}
+
+.BS .bg.active {
+    opacity: 1; /* Saat aktif, ubah opasitas menjadi 1 */
+    z-index: 1; /* Pindahkan elemen aktif ke atas */
+}
+
+.BS .bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 7px;
+}
+
+.BS .navigation {
+    z-index: 2;
+    position: absolute;
+    display: flex;
+    bottom: .5rem;
+    left: 28%;
+    transform: translateX(-50%);
+}
+
+.BS .navigation .btn {
+    background: rgba(255, 255, 255, 0.5);
+    width: 12px;
+    height: 12px;
+    margin: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.BS .navigation .btn.active {
+    background-color: #F5F6F8;
 }
 
 .content .content-btn{

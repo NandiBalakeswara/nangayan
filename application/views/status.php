@@ -36,13 +36,28 @@
             You can see your booking status below           
             </div>
             <article class="BS">
-                <div>
-                    <img src="<?php echo base_url('berkas/'.$data->foto); ?>" alt="NangAyan Hotels">
-                    <div class="status-kamar">
-                        <h2><?php echo $data->jenis_kamar; ?></h2>
+                    <div>
+                        <div class="bg-container">
+                            <div class="bg active">
+                                <img src="<?php echo base_url('assets/styles/SuperiorRoom10.jpg'); ?>" alt="Hotels">
+                            </div>
+                            <div class="bg">
+                                <img src="<?php echo base_url('assets/styles/hotel_bg.jpg'); ?>" alt="Hotels">
+                            </div>
+                            <div class="bg">
+                                <img src="<?php echo base_url('assets/styles/balcony.jpg'); ?>" alt="Hotels">
+                            </div>
+                        </div>
+                        <div class="navigation">
+                            <div class="btn active"></div>
+                            <div class="btn"></div>
+                            <div class="btn"></div>
+                        </div>
+                        <div class="status-kamar">
+                            <h2><?php echo $data->jenis_kamar; ?></h2>
+                        </div>
+                        <h4>Bali, Indonesia</h4>
                     </div>
-                    <h4>Bali, Indonesia</h4>
-                </div>
                     <form action="" class="content-form">
                         <div class="form-group">
                             <div class="form-wrapper">
@@ -110,5 +125,67 @@
         </div>
     </main>
     <?php include('footer.php'); ?>
+
+    <script>
+        var slides = document.querySelectorAll('.bg');
+var btns = document.querySelectorAll('.btn');
+let currentSlide = 0; 
+var sliderAuto;
+
+// Manual Navigation
+var manualNav = function(manual) {
+    slides.forEach((slide) => {
+        slide.style.opacity = 0; 
+        slide.classList.remove('active');
+
+        btns.forEach((btn) => {
+            btn.classList.remove('active');
+        });
+    });
+
+    slides[manual].style.opacity = 1; 
+    slides[manual].classList.add('active');
+    btns[manual].classList.add('active');
+
+    // Reset interval untuk memulai otomatis dari awal
+    clearInterval(sliderAuto);
+    startSliderAuto();
+}
+
+btns.forEach((btn, i) => {
+    btn.addEventListener("click", () => {
+        manualNav(i);
+        currentSlide = i;
+    });
+});
+
+// Auto image slider function
+function startSliderAuto() {
+    sliderAuto = setInterval(() => {
+        slides.forEach((slide) => {
+            slide.style.opacity = 0; 
+            slide.classList.remove('active');
+
+            btns.forEach((btn) => {
+                btn.classList.remove('active');
+            });
+        });
+
+        currentSlide++;
+
+        if (currentSlide >= slides.length) {
+            currentSlide = 0;
+        }
+
+        slides[currentSlide].style.opacity = 1; 
+        slides[currentSlide].classList.add('active');
+        btns[currentSlide].classList.add('active');
+    }, 10000); // Interval untuk ganti gambar dalam ms
+}
+
+// Memulai proses otomatis saat halaman dimuat
+startSliderAuto();
+
+        </script>
 </body> 
 </html>
