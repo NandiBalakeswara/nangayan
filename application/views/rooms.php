@@ -50,10 +50,12 @@
                 comfort isn't our only objective, we also value good design, sleek contemporary furnishing complemented
                 by the rich tones of nature's palette as visible from our room's sea-view windows and terraces.
             </div>
-            <?php foreach ($kamar as $room) { ?>
+            <?php foreach ($kamar as $room) {
+                $foto_pertama = $this->mrooms->getFirstPhoto($room->id_kamar);
+            ?>
                 <article class="room" id="room">
                     <div>
-                        <img src=" <?php echo base_url('berkas/' . $room->foto); ?>" alt="NangAyan Hotels">
+                        <img src="<?php echo base_url('berkas/' . $foto_pertama->foto); ?>" alt="NangAyan Hotels">
                         <h2><?php echo $room->jenis_kamar; ?></h2>
                     </div>
                     <div class="content-botton">

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Migration_Create_tbfoto extends CI_Migration {
+class Migration_Create_tbfoto extends CI_Migration
+{
 
     public function up()
     {
@@ -9,14 +10,21 @@ class Migration_Create_tbfoto extends CI_Migration {
             'id_foto' => array(
                 'type' => 'INT',
                 'constraint' => 11,
-                'unsigned' => TRUE, 
+                'unsigned' => TRUE,
+                'auto_increment' => TRUE
+            ),
+            'id_kamar' => array(
+                'type' => 'INT',
+                'constraint' => 11,
+                'unsigned' => TRUE,
             ),
             'foto' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ),
         ));
-        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_foto) REFERENCES tbkamar(id_kamar) ON DELETE CASCADE ON UPDATE CASCADE');
+        $this->dbforge->add_key('id_foto', TRUE);
+        $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_kamar) REFERENCES tbkamar(id_kamar) ON DELETE CASCADE ON UPDATE CASCADE');
         $this->dbforge->create_table('tbfoto');
     }
 

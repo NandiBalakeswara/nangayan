@@ -28,17 +28,24 @@
                 Bali, Indonesia
                 <article class="picture">
                     <div class="rooms_img_left">
-                        <img src="<?php echo base_url('assets/styles/SuperiorRoom10.jpg'); ?>" alt="Hotels">
+                        <?php if (!empty($photos[0])) : ?>
+                            <img src="<?php echo base_url('berkas/' . $photos[0]->foto); ?>" alt="Hotels">
+                        <?php endif; ?>
                     </div>
                     <div class="rooms_img_right">
                         <div class="rooms_img">
-                            <img src="<?php echo base_url('assets/styles/hotel_bg.jpg'); ?>" alt="Hotels">
+                            <?php if (!empty($photos[1])) : ?>
+                                <img src="<?php echo base_url('berkas/' . $photos[1]->foto); ?>" alt="Hotels">
+                            <?php endif; ?>
                         </div>
                         <div class="rooms_img">
-                            <img src="<?php echo base_url('assets/styles/balcony.jpg'); ?>" alt="Hotels">
+                            <?php if (!empty($photos[2])) : ?>
+                                <img src="<?php echo base_url('berkas/' . $photos[2]->foto); ?>" alt="Hotels">
+                            <?php endif; ?>
                         </div>
                     </div>
                 </article>
+
                 <article class="frame">
                     <div class="desc" style="text-align: left;">
                         <h3><?php echo $room->jenis_kamar; ?></h3>
