@@ -21,6 +21,8 @@ class Mkamar extends CI_Model
 				$this->db->insert('tbfoto', array('id_kamar' => $id_kamar, 'foto' => $foto));
 			}
 		}
+
+		return $id_kamar;
 	}
 
 	function tampildata()
@@ -65,5 +67,30 @@ class Mkamar extends CI_Model
 		$id_kamar = $data['id_kamar'];
 		$this->db->where('id_kamar', $id_kamar);
 		$this->db->delete('tbkamar');
+	}
+
+	function tambahNomorKamar($id_kamar, $nomor_kamar)
+	{
+		$this->db->trans_start(); // Memulai transaksi
+
+		// Cek apakah nomor kamar sudah ada di tbnokamar
+		$this->db->where('id_kamar', $id_kamar);
+		$query_nokamar = $this->db->get('tbnokamar');
+
+		if ($query_nokamar->num_rows() == 0) {
+			// Jika belum ada, masukkan nomor kamar ke tbnokamar
+			for ($i = 1; $i <= $nomor_kamar; $i++) {
+				$data = array(
+					'id_kamar' => $id_kamar,
+					'no_kamar' => $i,
+					'status_ketersediaan' => 'Tersedia'
+				);
+				$this->db->insert('tbnokamar', $data);
+			}
+		}
+
+		$this->db->trans_complete(); // Akhiri transaksi
+
+		return $this->db->trans_status();
 	}
 }

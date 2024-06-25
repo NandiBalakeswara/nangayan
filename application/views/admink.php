@@ -31,7 +31,7 @@
                             <th>Jenis Kamar</th>
                             <th>Deskripsi</th>
                             <th>Harga</th>
-                            <th>Nomor Kamar</th>
+                            <th>Jumlah Kamar</th>
                             <th>Foto</th>
                             <th>Action</th>
                         </tr>
@@ -96,8 +96,8 @@
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
-                                <label for="nomor_kamar">Nomor Kamar</label>
-                                <input type="number" id="nomor_kamar" name="nomor_kamar" disabled>
+                                <label for="nomor_kamar">Jumlah Kamar</label>
+                                <input type="number" id="nomor_kamar" name="nomor_kamar">
                             </div>
                             <div class="form-wrapper">
                                 <label for="foto1">Foto 1</label>
@@ -150,7 +150,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
-                                    <label for="">Nomor Kamar</label>
+                                    <label for="">Jumlah Kamar</label>
                                     <input type="text" name="nomor_kamar" disabled>
                                 </div>
                                 <div class="form-wrapper">
@@ -203,7 +203,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
-                                    <label for="">Nomor Kamar</label>
+                                    <label for="">Jumlah Kamar</label>
                                     <input type="text" name="nomor_kamar" disabled>
                                 </div>
                                 <div class="form-wrapper">

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Migration_Create_tbnokamar extends CI_Migration {
+class Migration_Create_tbnokamar extends CI_Migration
+{
 
     public function up()
     {
@@ -9,21 +10,20 @@ class Migration_Create_tbnokamar extends CI_Migration {
             'no_kamar' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '10',
-                // 'unique' => TRUE, 
-               
             ),
             'id_kamar' => array(
                 'type' => 'INT',
                 'constraint' => 11,
                 'unsigned' => TRUE,
             ),
-            
+            'status_ketersediaan' => array(
+                'type' => 'ENUM("Tersedia","Tidak Tersedia")',
+                'default' => 'Tersedia',
+            ),
         ));
         $this->dbforge->add_key('no_kamar', TRUE);
         $this->dbforge->add_field('CONSTRAINT FOREIGN KEY (id_kamar) REFERENCES tbkamar(id_kamar) ON DELETE CASCADE ON UPDATE CASCADE');
         $this->dbforge->create_table('tbnokamar');
-
-       
     }
 
     public function down()
