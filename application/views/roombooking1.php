@@ -54,7 +54,7 @@
                     </div>
                     <div class="form-wrapper-info">
                         <label for="">Jumlah Kamar</label>
-                        <input type="number" name="jumlah_pesanan" id="jumlah_pesanan" min="1" value="1">
+                        <input type="number" name="jumlah_pesanan" id="jumlah_pesanan" min="1" value="<?php echo isset($_POST['jumlah_pesanan']) ? $_POST['jumlah_pesanan'] : 1; ?>">
                     </div>
                     <input type="hidden" name="id_pengguna" value="<?php echo $this->session->userdata('id_pengguna') ?>">
                     <input type="hidden" name="waktu_masuk" value="<?php echo $waktu_masuk ?>">

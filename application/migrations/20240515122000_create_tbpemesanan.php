@@ -37,10 +37,6 @@ class Migration_Create_tbpemesanan extends CI_Migration
                 'constraint' => 11,
                 'unsigned' => TRUE,
             ),
-            'no_kamar' => array(
-                'type' => 'VARCHAR',
-                'constraint' => '10',
-            ),
             'kode_pembayaran' => array(
                 'type' => 'VARCHAR',
                 'constraint' => '10',
@@ -63,7 +59,6 @@ class Migration_Create_tbpemesanan extends CI_Migration
         $sql = "ALTER TABLE `tbpemesanan`
                 ADD CONSTRAINT `fk_pemesanan_pengguna` FOREIGN KEY (`id_pengguna`) REFERENCES `tbpengguna`(`id_pengguna`) ON DELETE CASCADE ON UPDATE CASCADE,
                 ADD CONSTRAINT `fk_pemesanan_layanan` FOREIGN KEY (`id_layanan`) REFERENCES `tblayanan`(`id_layanan`) ON DELETE CASCADE ON UPDATE CASCADE,
-                ADD CONSTRAINT `fk_pemesanan_nokamar` FOREIGN KEY (`no_kamar`) REFERENCES `tbnokamar`(`no_kamar`) ON DELETE CASCADE ON UPDATE CASCADE,
                 ADD CONSTRAINT `fk_pemesanan_kamar` FOREIGN KEY (`id_kamar`) REFERENCES `tbkamar`(`id_kamar`) ON DELETE CASCADE ON UPDATE CASCADE;";
         $this->db->query($sql);
     }

@@ -35,7 +35,18 @@ class Cpemesanan extends CI_Controller
 		} else {
 			echo 'Error: No Kamar tidak ditemukan.';
 		}
+
+		if ($this->mpemesanan->simpandata($data) === false) {
+			// Tangani ketersediaan kamar yang tidak mencukupi (misalnya, tampilkan pesan error)
+			$this->session->set_flashdata('error', 'Kamar yang tersedia tidak cukup!');
+			redirect('cpemesanan/tampilroombooking1');
+		} else {
+			// Pemesanan berhasil (redirect atau tampilkan pesan sukses)
+			redirect('cstatus/showBookingStatus'); // Ubah sesuai kebutuhan
+		}
 	}
+
+
 
 	function tampilroombooking2()
 	{
