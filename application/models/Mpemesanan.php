@@ -114,4 +114,34 @@ class Mpemesanan extends CI_Model
 			->get();
 		return $query->result();
 	}
+
+	// Mendapatkan pemesanan yang telah berakhir
+	public function get_expired_reservations()
+	{
+		$this->db->select('tbpemesanan_detail.no_kamar, tbpemesanan.id_kamar');
+		$this->db->from('tbpemesanan');
+		$this->db->join('tbpemesanan_detail', 'tbpemesanan.id_pemesanan = tbpemesanan_detail.id_pemesanan');
+		$this->db->where('tbpemesanan.waktu_keluar <', date('Y-m-d H:i:s'));
+		$this->db->where('tbpemesanan.status_pemesanan', 'Tervalidasi');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	// Mengubah status kamar menjadi Tersedia
+	public function update_room_availability($no_kamar, $id_kamar)
+	{
+		$this->db->set('status_ketersediaan', 'Tersedia');
+		$this->db->where('no_kamar', $no_kamar);
+		$this->db->where('id_kamar', $id_kamar);
+		$this->db->update('tbnokamar');
+	}
+
+	// Memperbarui status kamar yang telah berakhir
+	public function update_expired_reservations()
+	{
+		$expired_reservations = $this->get_expired_reservations();
+		foreach ($expired_reservations as $reservation) {
+			$this->update_room_availability($reservation->no_kamar, $reservation->id_kamar);
+		}
+	}
 }

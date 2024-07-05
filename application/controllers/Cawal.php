@@ -6,12 +6,14 @@ class Cawal extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('mawal');
+		$this->load->model('Mpemesanan');
 	}
 
 	public function tampilawal()
 	{
 		// $data['top_rooms'] = $this->mawal->getTopTwoRooms();
 		$this->load->view('landing_page');
+		$this->Mpemesanan->update_expired_reservations();
 	}
 
 	function tampilroomdetails()
