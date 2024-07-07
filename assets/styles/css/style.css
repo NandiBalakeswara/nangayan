@@ -911,13 +911,13 @@ main{
     align-items: center;
     text-align: center;
     width: 25rem;
-    height: 13rem;
 }
 
 .BS .code h1{
     font-family: 'Montserrat', sans-serif;
     font-size: x-large;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .BS .code h2{
@@ -930,12 +930,29 @@ main{
 }
 
 .BS .code h4{
-    flex: 1;
+    flex: 0;
     margin: 0;
     font-size: medium;
     font-weight: 200;
-    height: 1px;
+    height: fit-content;
     text-align: justify;
+}
+
+.BS .code p{
+    margin: 10px;
+    display: flex;
+    width: 25rem;
+}
+
+.BS .btn button {
+        border: none;
+        height: 2rem;
+        border-radius: 5px;
+        background-color: #3252DF;
+        color: white;
+        width: 15.55rem;
+        font-weight: 700;
+        cursor: pointer;
 }
 
 /* .BS img{

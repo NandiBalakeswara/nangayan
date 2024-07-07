@@ -4,7 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('assets/styles/style.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/styles/css/style.css'); ?>">
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="SB-Mid-client-2TObtnkDD8MVixl3"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <title>Payment</title>
 </head>
 
@@ -70,9 +72,9 @@
                     </div>
                     <div class="code">
                         <h3>Kode Pembayaran</h3>
-                        <h4>Untuk melakukan pembayaran anda dapat melakukan transfer ke nomor rekening dibawah atau melakukan pembayaran dikasir dengan menyertakan kode berikut </h4>
-                        <p style="margin: 1px;display: flex;width: 25rem;">No. Rek Pembayaran : 70001081338665572</p>
-                        <p style="margin: 1px;display: flex;width: 25rem;">No. Telp Admin : <a href="http://wa.me/62881037551260" style="color: 14274A; text-decoration: none;">+62 881-0375-51260</a></p>
+                        <h4>To make a payment, you can make a transfer to the account number below or make a cashier payment by including the following code</h4>
+                        <p>No. Rek Pembayaran : 70001081338665572</p>
+                        <p>No. Telp Admin : <a href="http://wa.me/62881037551260" style="color: 14274A; text-decoration: none;">+62 881-0375-51260</a></p>
                         <h1><?php
                             if ($pemesanan->status_pemesanan == 'Tervalidasi') {
                                 echo $pemesanan->kode_pembayaran;
@@ -81,7 +83,10 @@
                             } else {
                                 echo  'Pemesanan Gagal Diproses Kamar Penuh';
                             }
-                            ?></h1>
+                            ?>
+                        </h1>
+                        <div class="btn" id="pay-button"> <button>Metode Pembayaran Lainnya</button>
+                        </div>
                     </div>
                 </article>
             <?php endforeach; ?>
@@ -92,6 +97,53 @@
         </div>
     </main>
     <?php include('footer.php'); ?>
+    <script type="text/javascript">
+        $('#pay-button').click(function(event) {
+            event.preventDefault();
+            $(this).attr("disabled", "disabled");
+
+            $.ajax({
+                url: '<?= site_url() ?>/snap/token',
+                cache: false,
+
+                success: function(data) {
+                    //location = data;
+
+                    console.log('token = ' + data);
+
+                    var resultType = document.getElementById('result-type');
+                    var resultData = document.getElementById('result-data');
+
+                    function changeResult(type, data) {
+                        $("#result-type").val(type);
+                        $("#result-data").val(JSON.stringify(data));
+                        //resultType.innerHTML = type;
+                        //resultData.innerHTML = JSON.stringify(data);
+                    }
+
+                    snap.pay(data, {
+
+                        onSuccess: function(result) {
+                            changeResult('success', result);
+                            console.log(result.status_message);
+                            console.log(result);
+                            $("#payment-form").submit();
+                        },
+                        onPending: function(result) {
+                            changeResult('pending', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        },
+                        onError: function(result) {
+                            changeResult('error', result);
+                            console.log(result.status_message);
+                            $("#payment-form").submit();
+                        }
+                    });
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

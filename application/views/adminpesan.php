@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('assets/styles/admin.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/styles/css/admin.css'); ?>">
     <title>Admin-Pemesanan</title>
 </head>
 

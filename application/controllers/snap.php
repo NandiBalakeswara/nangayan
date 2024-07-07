@@ -1,62 +1,37 @@
-<?php
-class Cpemesanan extends CI_Controller
+<?php if (!defined('BASEPATH')) exit('No direct script access allowed');
+
+class Snap extends CI_Controller
 {
-	function __construct()
+
+	/**
+	 * Index Page for this controller.
+	 *
+	 * Maps to the following URL
+	 * 		http://example.com/index.php/welcome
+	 *	- or -  
+	 * 		http://example.com/index.php/welcome/index
+	 *	- or -
+	 * Since this controller is set as the default controller in 
+	 * config/routes.php, it's displayed at http://example.com/
+	 *
+	 * So any other public methods not prefixed with an underscore will
+	 * map to /index.php/welcome/<method_name>
+	 * @see http://codeigniter.com/user_guide/general/urls.html
+	 */
+
+
+	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('mpemesanan');
-		$this->load->database();
 		$params = array('server_key' => 'SB-Mid-server-GBHAiHZjIHxUg2MqJXfp651H', 'production' => false);
 		$this->load->library('midtrans');
 		$this->midtrans->config($params);
 		$this->load->helper('url');
 	}
 
-	function tampilroombooking1()
+	public function index()
 	{
-		$id_kamar = $this->input->post('id_kamar');
-		$data['waktu_masuk'] = $this->input->post('waktu_masuk');
-		$data['waktu_keluar'] = $this->input->post('waktu_keluar');
-		$data['kamar'] = $this->mpemesanan->getRoomDetails($id_kamar);
-		$data['first_photo'] = $this->mpemesanan->getFirstPhoto($id_kamar);
-		$data['layananList'] = $this->db->get('tblayanan')->result();
-		$this->load->view('roombooking1', $data);
-	}
-
-	function simpandata()
-	{
-		$data = $this->input->post();
-		$data['kode_pembayaran'] = $this->mpemesanan->getkodepembayaran();
-
-		// Cek validitas no_kamar
-		$no_kamar = '1'; // Diganti dengan logika bisnis Anda untuk mendapatkan no_kamar yang valid
-		$query = $this->db->get_where('tbnokamar', array('no_kamar' => $no_kamar));
-
-		if ($query->num_rows() > 0) {
-			$data['no_kamar'] = $no_kamar;
-			$this->mpemesanan->simpandata($data);
-			redirect('cpemesanan/tampilroombooking2');
-		} else {
-			echo 'Error: No Kamar tidak ditemukan.';
-		}
-
-		if ($this->mpemesanan->simpandata($data) === false) {
-			// Tangani ketersediaan kamar yang tidak mencukupi (misalnya, tampilkan pesan error)
-			$this->session->set_flashdata('error', 'Kamar yang tersedia tidak cukup!');
-			redirect('cpemesanan/tampilroombooking1');
-		} else {
-			// Pemesanan berhasil (redirect atau tampilkan pesan sukses)
-			redirect('cstatus/showBookingStatus'); // Ubah sesuai kebutuhan
-		}
-	}
-
-
-
-	function tampilroombooking2()
-	{
-		$id_pengguna = $this->session->userdata('id_pengguna');
-		$data['pemesananList'] = $this->mpemesanan->getpesanan($id_pengguna); // Ubah menjadi getpesanan untuk mendapatkan list pesanan
-		$this->load->view('roombooking2', $data); // Kirim data $data ke view roombooking2
+		$this->load->view('checkout_snap');
 	}
 
 	public function token()

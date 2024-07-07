@@ -34,7 +34,7 @@ main{
 }
 
 .side{
-    background-image: url('hotel_bg3.jpg');
+    background-image: url(../hotel_bg3.jpg);
     background-size: cover;
     background-position: center;
 }
