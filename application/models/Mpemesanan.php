@@ -106,11 +106,12 @@ class Mpemesanan extends CI_Model
 
 	function getpesanan($id_pengguna)
 	{
-		$query = $this->db->select('status_pembayaran, status_pemesanan, kode_pembayaran, waktu_keluar, waktu_masuk, DATEDIFF(waktu_keluar, waktu_masuk) AS jumlah_hari, harga, harga_layanan, jumlah_pesanan, jenis_kamar')
+		$query = $this->db->select('status_pembayaran, status_pemesanan, kode_pembayaran, waktu_keluar, waktu_masuk, DATEDIFF(waktu_keluar, waktu_masuk) AS jumlah_hari, harga, harga_layanan, jumlah_pesanan, jenis_kamar, nama_layanan, nama_lengkap, username, nomor_hp')
 			->from('tbpemesanan')
 			->join('tbkamar', 'tbpemesanan.id_kamar=tbkamar.id_kamar')
 			->join('tblayanan', 'tbpemesanan.id_layanan=tblayanan.id_layanan')
-			->where('id_pengguna', $id_pengguna)
+			->join('tbpengguna', 'tbpemesanan.id_pengguna=tbpengguna.id_pengguna')
+			->where('tbpengguna.id_pengguna', $id_pengguna)
 			->get();
 		return $query->result();
 	}
@@ -143,5 +144,12 @@ class Mpemesanan extends CI_Model
 		foreach ($expired_reservations as $reservation) {
 			$this->update_room_availability($reservation->no_kamar, $reservation->id_kamar);
 		}
+	}
+
+	public function updateStatusPembayaran($id_pengguna)
+	{
+		$this->db->set('status_pembayaran', 'Tervalidasi');
+		$this->db->where('id_pengguna', $id_pengguna);
+		$this->db->update('tbpemesanan');
 	}
 }

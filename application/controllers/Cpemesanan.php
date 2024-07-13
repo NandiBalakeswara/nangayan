@@ -62,59 +62,64 @@ class Cpemesanan extends CI_Controller
 	public function token()
 	{
 
+		$jenis_kamar = $this->input->post('jenis_kamar');
+		$harga_kamar = $this->input->post('harga_kamar');
+		$sub_total_kamar = $this->input->post('sub_total_kamar');
+		$nama_layanan = $this->input->post('nama_layanan');
+		$layanan_tambahan = $this->input->post('layanan_tambahan');
+		$jumlah_pesanan = $this->input->post('jumlah_pesanan');
+		$lama_menginap = $this->input->post('lama_menginap');
+		$total_pembayaran = $this->input->post('total_pembayaran');
+
+		$total_sewa = $lama_menginap * $jumlah_pesanan;
+
+		$nama_lengkap = $this->input->post('nama_lengkap');
+		$email = $this->input->post('username');
+		$nomor_hp = $this->input->post('nomor_hp');
+
 		// Required
 		$transaction_details = array(
 			'order_id' => rand(),
-			'gross_amount' => 94000, // no decimal allowed for creditcard
+			'gross_amount' => $total_pembayaran, // no decimal allowed for creditcard
 		);
 
-		// Optional
-		$item1_details = array(
-			'id' => 'a1',
-			'price' => 18000,
-			'quantity' => 3,
-			'name' => "Apple"
-		);
+		// // Optional
+		// $item1_details = array(
+		// 	'id' => 'a1',
+		// 	'price' => $sub_total_kamar,
+		// 	'quantity' => $lama_menginap,
+		// 	'name' => $jenis_kamar
+		// );
 
-		// Optional
-		$item2_details = array(
-			'id' => 'a2',
-			'price' => 20000,
-			'quantity' => 2,
-			'name' => "Orange"
-		);
+		// // // Optional problem
+		// $item2_details = array(
+		// 	'id' => 'a2',
+		// 	'price' => 100000,
+		// 	'quantity' => 1,
+		// 	'name' => $nama_layanan
+		// );
 
-		// Optional
-		$item_details = array($item1_details, $item2_details);
+		// // Optional
+		// $item_details = array($item1_details, $item2_details);
 
 		// Optional
 		$billing_address = array(
-			'first_name'    => "Andri",
-			'last_name'     => "Litani",
-			'address'       => "Mangga 20",
-			'city'          => "Jakarta",
-			'postal_code'   => "16602",
-			'phone'         => "081122334455",
-			'country_code'  => 'IDN'
+			'first_name'    => $nama_lengkap,
+			'phone'         => $nomor_hp
 		);
 
 		// Optional
 		$shipping_address = array(
-			'first_name'    => "Obet",
-			'last_name'     => "Supriadi",
-			'address'       => "Manggis 90",
-			'city'          => "Jakarta",
-			'postal_code'   => "16601",
-			'phone'         => "08113366345",
-			'country_code'  => 'IDN'
+			'first_name'    => $nama_lengkap,
+			'address'       => $email,
+			'phone'         => $nomor_hp
 		);
 
 		// Optional
 		$customer_details = array(
-			'first_name'    => "Andri",
-			'last_name'     => "Litani",
+			'first_name'    => $nama_lengkap,
 			'email'         => "andri@litani.com",
-			'phone'         => "081122334455",
+			'phone'         => $nomor_hp,
 			'billing_address'  => $billing_address,
 			'shipping_address' => $shipping_address
 		);
@@ -128,12 +133,12 @@ class Cpemesanan extends CI_Controller
 		$custom_expiry = array(
 			'start_time' => date("Y-m-d H:i:s O", $time),
 			'unit' => 'minute',
-			'duration'  => 2
+			'duration'  => 1
 		);
 
 		$transaction_data = array(
 			'transaction_details' => $transaction_details,
-			'item_details'       => $item_details,
+			// 'item_details'       => $item_details,
 			'customer_details'   => $customer_details,
 			'credit_card'        => $credit_card,
 			'expiry'             => $custom_expiry
@@ -148,8 +153,34 @@ class Cpemesanan extends CI_Controller
 	public function finish()
 	{
 		$result = json_decode($this->input->post('result_data'));
-		echo 'RESULT <br><pre>';
-		var_dump($result);
-		echo '</pre>';
+		// echo 'RESULT <br><pre>';
+		// var_dump($result);
+		// echo '</pre>';
+		// redirect('cawal/tampilroombooking3');
+
+		$result_type = $this->input->post('result_type');
+		$result_data = $this->input->post('result_data');
+		$jenis_kamar = $this->input->post('jenis_kamar');
+		$harga_kamar = $this->input->post('harga_kamar');
+		$sub_total_kamar = $this->input->post('sub_total_kamar');
+		$nama_layanan = $this->input->post('nama_layanan');
+		$total_pembayaran = $this->input->post('total_pembayaran');
+
+		// Lakukan verifikasi pembayaran (misalnya dari Midtrans) disini
+		if ($result_type == 'success') {
+			// Update status pembayaran menjadi 'Tervalidasi' berdasarkan id_pengguna
+			$this->load->model('Mpemesanan');
+			$id_pengguna = $this->session->userdata('id_pengguna'); // Sesuaikan dengan cara Anda menangani id_pengguna
+			$this->mpemesanan->updateStatusPembayaran($id_pengguna);
+
+			// Tampilkan halaman atau redirect ke halaman sukses
+			redirect('cawal/tampilroombooking3');
+		} elseif ($result->transaction_status == 'expired') {
+			error_log('Transaction expired');
+			redirect('cpemesanan/tampilroombooking2');
+		} else {
+			error_log('Transaction failed');
+			redirect('cpemesanan/tampilroombooking2');
+		}
 	}
 }

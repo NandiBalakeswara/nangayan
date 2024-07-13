@@ -33,9 +33,19 @@
                                 </div>
 
                                 <div class="payment">
+                                    <h4>Harga Kamar :</h4>
+                                    <h2>Rp.<?php echo $harga_kamar = number_format($pemesanan->harga, 0, ',', '.') ?></h2>
+                                </div>
+
+                                <div class="payment">
+                                    <h4>Jumlah Pesanan :</h4>
+                                    <h2><?php echo $pemesanan->jumlah_pesanan; ?></h2>
+                                </div>
+
+                                <div class="payment">
                                     <h4>Sub Total Kamar :</h4>
                                     <h2>Rp.<?php
-                                            $harga = ($pemesanan->harga * $pemesanan->jumlah_hari * $pemesanan->jumlah_pesanan);
+                                            $harga = ($pemesanan->harga  * $pemesanan->jumlah_pesanan);
                                             $harga_formatted = number_format($harga, 0, ',', '.');
                                             echo $harga_formatted;
                                             ?>
@@ -61,7 +71,7 @@
                                 <div class="total">
                                     <h4>Total Pembayaran :</h4>
                                     <h2>Rp.<?php
-                                            $total = $harga + $hargal;
+                                            $total = ($harga * $pemesanan->jumlah_hari) + $hargal;
                                             $total_formatted = number_format($total, 0, ',', '.');
                                             echo $total_formatted;
                                             ?>
@@ -85,8 +95,27 @@
                             }
                             ?>
                         </h1>
-                        <div class="btn" id="pay-button"> <button>Metode Pembayaran Lainnya</button>
-                        </div>
+                        <form id="payment-form" method="post" action="<?= site_url() ?>/cpemesanan/finish">
+                            <input type="hidden" name="result_type" id="result-type" value="">
+                            <input type="hidden" name="result_data" id="result-data" value="">
+                            <input type="hidden" name="jenis_kamar" id="jenis_kamar" value="<?= $pemesanan->jenis_kamar; ?>">
+                            <input type="hidden" name="harga_kamar" id="harga_kamar" value="<?= $harga_kamar; ?>">
+                            <input type="hidden" name="sub_total_kamar" id="sub_total_kamar" value="<?= $harga; ?>">
+                            <input type="hidden" name="nama_layanan" id="nama_layanan" value="<?= $pemesanan->nama_layanan; ?>">
+                            <input type="hidden" name="layanan_tambahan" id="layanan_tambahan" value="<?= $hargal ?>">
+                            <input type="hidden" name="jumlah_pesanan" id="jumlah_pesanan" value="<?= $pemesanan->jumlah_pesanan; ?>">
+                            <input type="hidden" name="lama_menginap" id="lama_menginap" value="<?= $pemesanan->jumlah_hari; ?>">
+                            <input type="hidden" name="total_pembayaran" id="total_pembayaran" value="<?= $total; ?>">
+
+                            <input type="hidden" nama="nama_lengkap" id="nama_lengkap" value="<?php echo $pemesanan->nama_lengkap; ?>">
+                            <input type="hidden" nama="username" id="username" value="<?php echo $pemesanan->username; ?>">
+                            <input type="hidden" nama="nomor_hp" id="nomor_hp" value="<?php echo $pemesanan->nomor_hp; ?>">
+
+
+                            <div class="btn" id="pay-button">
+                                <button>Metode Pembayaran Lainnya</button>
+                            </div>
+                        </form>
                     </div>
                 </article>
             <?php endforeach; ?>
@@ -97,13 +126,39 @@
         </div>
     </main>
     <?php include('footer.php'); ?>
-    <script type="text/javascript">
+    <script>
+        var jenis_kamar = $('#jenis_kamar').val();
+        var harga_kamar = $('#harga_kamar').val();
+        var sub_total_kamar = $('#sub_total_kamar').val();
+        var nama_layanan = $('#nama_layanan').val();
+        var layanan_tambahan = $('#layanan_tambahan').val();
+        var jumlah_pesanan = $('#jumlah_pesanan').val();
+        var lama_menginap = $('#lama_menginap').val();
+        var total_pembayaran = $('#total_pembayaran').val();
+
+        var nama_lengkap = $('#nama_lengkap').val();
+        var username = $('#username').val();
+        var nomor_hp = $('#nomor_hp').val();
+
         $('#pay-button').click(function(event) {
             event.preventDefault();
-            $(this).attr("disabled", "disabled");
-
             $.ajax({
-                url: '<?= site_url() ?>/snap/token',
+                type: 'POST',
+                url: '<?= site_url() ?>/cpemesanan/token',
+                data: {
+                    jenis_kamar: jenis_kamar,
+                    harga_kamar: harga_kamar,
+                    sub_total_kamar: sub_total_kamar,
+                    nama_layanan: nama_layanan,
+                    layanan_tambahan: layanan_tambahan,
+                    jumlah_pesanan: jumlah_pesanan,
+                    lama_menginap: lama_menginap,
+                    total_pembayaran: total_pembayaran,
+
+                    nama_lengkap: nama_lengkap,
+                    username: username,
+                    nomor_hp: nomor_hp
+                },
                 cache: false,
 
                 success: function(data) {
@@ -140,6 +195,9 @@
                             $("#payment-form").submit();
                         }
                     });
+                },
+                error: function(xhr, status, error) {
+                    console.error('Failed to obtain token: ', error);
                 }
             });
         });
