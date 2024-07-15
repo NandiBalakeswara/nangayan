@@ -43,6 +43,12 @@ class Clayanan extends CI_Controller {
 
         redirect('clayanan/tampiladminl'); 
     }
+    function search()
+	{
+		$cari = $this->input->post('cari');
+		$data['hasil'] =$this->mlayanan->search($cari);;
+		$this->load->view('adminL', $data);
+	}
 
 }
 ?>

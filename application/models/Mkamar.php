@@ -27,11 +27,17 @@ class Mkamar extends CI_Model
 
 	function tampildata()
 	{
-		$this->db->select('tbkamar.*, GROUP_CONCAT(tbfoto.foto) as fotos');
+		$this->db->select('tbkamar.*, 
+                   COUNT(DISTINCT tbnokamar.no_kamar) as jumlah, 
+                   (SELECT COUNT(*) FROM tbnokamar WHERE tbnokamar.id_kamar = tbkamar.id_kamar AND tbnokamar.status_ketersediaan = "Tersedia") as jumlah_tersedia, 
+                   (SELECT COUNT(*) FROM tbnokamar WHERE tbnokamar.id_kamar = tbkamar.id_kamar AND tbnokamar.status_ketersediaan = "Tidak Tersedia") as jumlah_tidak_tersedia, 
+                   GROUP_CONCAT(DISTINCT tbfoto.foto) as fotos');
 		$this->db->from('tbkamar');
+		$this->db->join('tbnokamar', 'tbkamar.id_kamar = tbnokamar.id_kamar', 'left');
 		$this->db->join('tbfoto', 'tbkamar.id_kamar = tbfoto.id_kamar', 'left');
 		$this->db->group_by('tbkamar.id_kamar');
 		$query = $this->db->get();
+		return $query->result();
 
 		if ($query->num_rows() > 0) {
 			return $query->result();
@@ -92,5 +98,24 @@ class Mkamar extends CI_Model
 		$this->db->trans_complete(); // Akhiri transaksi
 
 		return $this->db->trans_status();
+	}
+	function search($cari){
+		$this->db->select('tbkamar.*, 
+                   COUNT(DISTINCT tbnokamar.no_kamar) as jumlah, 
+                   (SELECT COUNT(*) FROM tbnokamar WHERE tbnokamar.id_kamar = tbkamar.id_kamar AND tbnokamar.status_ketersediaan = "Tersedia") as jumlah_tersedia, 
+                   (SELECT COUNT(*) FROM tbnokamar WHERE tbnokamar.id_kamar = tbkamar.id_kamar AND tbnokamar.status_ketersediaan = "Tidak Tersedia") as jumlah_tidak_tersedia, 
+                   GROUP_CONCAT(DISTINCT tbfoto.foto) as fotos');
+		$this->db->from('tbkamar');
+		$this->db->join('tbnokamar', 'tbkamar.id_kamar = tbnokamar.id_kamar', 'left');
+		$this->db->join('tbfoto', 'tbkamar.id_kamar = tbfoto.id_kamar', 'left');
+		$this->db->like('tbkamar.jenis_kamar', $cari);
+		$this->db->group_by('tbkamar.id_kamar');
+		$query = $this->db->get();
+		return $query->result();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return array();
+		}
 	}
 }

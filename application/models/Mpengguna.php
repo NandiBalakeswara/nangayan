@@ -30,6 +30,17 @@ public function hapusdatapengguna($data){
     $this->db->where('id_pengguna', $id_pengguna);
     $this->db->delete('tbpengguna');
 }
+function search($cari){
+    $this->db->like('tbpengguna.nama_lengkap', $cari);
+    $query = $this->db->get('tbpengguna');
+    return $query->result();
+    if ($query->num_rows() > 0) {
+        return $query->result();
+    } else {
+        return array();
+    }
+    
+}
 
 }
 ?>

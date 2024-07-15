@@ -18,10 +18,12 @@
             <div class="title">
                 <h1>Kamar</h1>
                 <div class="search">
-                    <input type="search" placeholder="Cari Nama Pengguna">
+                    <form action="<?php echo base_url('ckamar/search'); ?>" method="post">
+                        <input type="search" name="cari" placeholder="Cari Kamar">
+                    </form>
                 </div>
                 <div class="btn">
-                    <button id="myBtn-add">+</button>
+                    <button id="myBtn-add">Tambah</button>
                 </div>
             </div>
             <div class="table">
@@ -46,7 +48,9 @@
                                     <td><?php echo $data->jenis_kamar; ?></td>
                                     <td><?php echo $data->deskripsi_kamar; ?></td>
                                     <td><?php echo $data->harga; ?></td>
-                                    <td><?php echo $data->nomor_kamar; ?></td>
+                                    <td>
+                                        <?php echo 'Tersedia : '.$data->jumlah_tersedia .' | '.'Tidak Tersedia : '.$data->jumlah_tidak_tersedia; ?>   
+                                    </td>
                                     <td>
                                         <?php
                                         $fotos = explode(',', $data->fotos);

@@ -17,9 +17,13 @@
             </div>
             <div class="title">
                 <h1>Layanan</h1>
-
+                <div class="search">
+                    <form action="<?php echo base_url('clayanan/search'); ?>" method="post">
+                        <input type="search" name="cari" placeholder="Cari Layanan">
+                    </form>
+                </div>
                 <div class="btn">
-                    <button id="myBtn-add">+ Tambah Layanan</button>
+                    <button id="myBtn-add">Tambah</button>
                 </div>
             </div>
             <div class="table">
