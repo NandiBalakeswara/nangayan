@@ -11,8 +11,8 @@ class Cawal extends CI_Controller
 
 	public function tampilawal()
 	{
-		// $data['top_rooms'] = $this->mawal->getTopTwoRooms();
-		$this->load->view('landing_page');
+		$data['top_rooms'] = $this->mawal->getTopTwoRooms();
+		$this->load->view('landing_page', $data);
 		$this->Mpemesanan->update_expired_reservations();
 	}
 
@@ -25,8 +25,8 @@ class Cawal extends CI_Controller
 	{
 
 		$this->mawal->validasi();
-		// $data['top_rooms'] = $this->mawal->getTopTwoRooms();
-		$this->load->view('homelogin');
+		$data['top_rooms'] = $this->mawal->getTopTwoRooms();
+		$this->load->view('homelogin', $data);
 	}
 
 	function tampilroombooking3()

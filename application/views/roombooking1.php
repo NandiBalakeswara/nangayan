@@ -72,6 +72,11 @@
                         </div>
                     </div>
                 </form>
+                <?php if ($this->session->flashdata('error_message')) : ?>
+                    <script>
+                        alert('<?php echo $this->session->flashdata('error_message'); ?>');
+                    </script>
+                <?php endif; ?>
             </article>
             <div class="content-btn">
                 <button style="background-color: #3252DF;" onclick="submitForm()">Continue to Book</button>
@@ -84,7 +89,6 @@
         function submitForm() {
             document.getElementById("bookingForm").submit();
         }
-
         // document.getElementById('jumlah_pesanan').addEventListener('input', function() {
         //     var jumlahPesanan = parseInt(this.value);
         //     var layananTambahanWrapper = document.getElementById('layananTambahanWrapper');

@@ -46,7 +46,7 @@
                                     <td><?php echo $data->jenis_kamar; ?></td>
                                     <td><?php echo $data->deskripsi_kamar; ?></td>
                                     <td><?php echo $data->harga; ?></td>
-                                    <td><?php echo $data->nomor_kamar; ?></td>
+                                    <td>Sekian Kamar Tersedia | Sekian Kamar Tidak Tersedia</td>
                                     <td>
                                         <?php
                                         $fotos = explode(',', $data->fotos);

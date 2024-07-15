@@ -20,11 +20,47 @@ class Cpemesanan extends CI_Controller
 		$data['kamar'] = $this->mpemesanan->getRoomDetails($id_kamar);
 		$data['first_photo'] = $this->mpemesanan->getFirstPhoto($id_kamar);
 		$data['layananList'] = $this->db->get('tblayanan')->result();
+
+		$data['id_kamar'] = $id_kamar;
+		$this->session->set_userdata('id_kamar', $id_kamar);
+
 		$this->load->view('roombooking1', $data);
 	}
 
 	function simpandata()
 	{
+		$data = $this->input->post();
+		$id_pengguna = $data['id_pengguna'];
+		$id_kamar = $data['id_kamar'];
+		$jumlah_pesanan = $data['jumlah_pesanan'];
+
+		$this->session->set_userdata('id_kamar', $id_kamar);
+
+		// Validasi ketersediaan kamar
+		$kamar_available = $this->mpemesanan->checkRoomAvailability($id_kamar);
+
+		if (!$kamar_available) {
+			// Set flashdata untuk pesan kesalahan
+			// echo "<script>alert('Tidak ada kamar yang tersedia');</script>";
+			$this->session->set_flashdata('error_message', 'Tidak ada kamar yang tersedia');
+			// Redirect atau tampilkan kembali form pemesanan
+			echo "<script>alert('Tidak ada kamar yang tersedia'); window.location.href='" . site_url('crooms/tampilroomslogin') . "';</script>";
+			// redirect('crooms/tampilroomslogin');
+			return;
+		}
+		// Validasi jumlah kamar yang dipesan
+		$available_rooms = $this->mpemesanan->getAvailableRoomsCount($id_kamar);
+
+		if ($jumlah_pesanan > $available_rooms) {
+			// Set flashdata untuk pesan kesalahan
+			$this->session->set_flashdata('error_message', 'Hanya tersedia ' . $available_rooms . ' kamar');
+			// Redirect atau tampilkan kembali form pemesanan
+			echo "<script>alert('Hanya tersedia " . $available_rooms . " kamar'); window.location.href='" . site_url('crooms/tampilroomslogin') . "';</script>";
+			// redirect('cpemesanan/tampilroombooking1');
+			return;
+		}
+
+
 		$data = $this->input->post();
 		$data['kode_pembayaran'] = $this->mpemesanan->getkodepembayaran();
 
@@ -182,5 +218,44 @@ class Cpemesanan extends CI_Controller
 			error_log('Transaction failed');
 			redirect('cpemesanan/tampilroombooking2');
 		}
+	}
+
+	// Controller Cpemesanan.php
+
+	public function submitForm()
+	{
+		// Ambil data dari form (contoh)
+		$id_pengguna = $this->input->post('id_pengguna');
+		$id_kamar = $this->input->post('id_kamar');
+		$jumlah_pesanan = $this->input->post('jumlah_pesanan');
+
+		// Validasi ketersediaan kamar
+		$kamar_available = $this->mpemesanan->checkRoomAvailability($id_kamar);
+
+		if (!$kamar_available) {
+			// Tampilkan alert jika tidak ada kamar yang tersedia
+			echo "<script>alert('Tidak ada kamar yang tersedia');</script>";
+			// Redirect atau tampilkan kembali form pemesanan
+			// redirect('c_pemesanan/index');
+			// atau
+			// $this->load->view('view_form_pemesanan');
+			return;
+		}
+
+		// Validasi jumlah kamar yang dipesan
+		$available_rooms = $this->mpemesanan->getAvailableRoomsCount($id_kamar);
+
+		if ($jumlah_pesanan > $available_rooms) {
+			// Tampilkan alert jika jumlah kamar yang diminta lebih dari yang tersedia
+			echo "<script>alert('Hanya tersedia $available_rooms kamar');</script>";
+			// Redirect atau tampilkan kembali form pemesanan
+			// redirect('c_pemesanan/index');
+			// atau
+			// $this->load->view('view_form_pemesanan');
+			return;
+		}
+
+		// Lanjutkan menyimpan data pemesanan ke dalam database
+		// ...
 	}
 }

@@ -68,6 +68,10 @@ class Mpemesanan extends CI_Model
 		// Insert into tbpemesanan_detail
 		$this->db->insert_batch('tbpemesanan_detail', $pemesanan_detail_data);
 
+		$this->db->set('status_pemesanan', 'Tervalidasi');
+		$this->db->where('id_pemesanan', $id_pemesanan);
+		$this->db->update('tbpemesanan');
+
 		$jumlah_pesanan = $this->input->post('jumlah_pesanan');
 
 		// Periksa ketersediaan kamar yang cukup
@@ -151,5 +155,22 @@ class Mpemesanan extends CI_Model
 		$this->db->set('status_pembayaran', 'Tervalidasi');
 		$this->db->where('id_pengguna', $id_pengguna);
 		$this->db->update('tbpemesanan');
+	}
+	public function checkRoomAvailability($id_kamar)
+	{
+		$this->db->where('id_kamar', $id_kamar);
+		$this->db->where('status_ketersediaan', 'Tersedia');
+		$query = $this->db->get('tbnokamar');
+
+		return $query->num_rows() > 0;
+	}
+
+	public function getAvailableRoomsCount($id_kamar)
+	{
+		$this->db->where('id_kamar', $id_kamar);
+		$this->db->where('status_ketersediaan', 'Tersedia');
+		$query = $this->db->get('tbnokamar');
+
+		return $query->num_rows();
 	}
 }
