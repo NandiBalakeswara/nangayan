@@ -17,13 +17,16 @@
             </div>
             <div class="title">
                 <h1>Kamar</h1>
-                <div class="search">
+                <!-- <div class="search">
                     <form action="<?php echo base_url('ckamar/search'); ?>" method="post">
                         <input type="search" name="cari" placeholder="Cari Kamar">
                     </form>
-                </div>
-                <div class="btn">
-                    <button id="myBtn-add">Tambah</button>
+                </div> -->
+                <div class="btn-room">
+                    <form action="<?php echo base_url('ckamar/search'); ?>" method="post">
+                        <input type="search" name="cari" placeholder="Cari Kamar">
+                    </form>
+                    <button id="myBtn-add" style="background-color: #5973D0;">Tambah</button>
                 </div>
             </div>
             <div class="table">
