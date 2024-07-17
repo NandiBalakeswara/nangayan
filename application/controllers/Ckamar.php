@@ -48,4 +48,26 @@ class Ckamar extends CI_Controller
 		$this->mkamar->hapusdata($data);
 		redirect('ckamar/tampiladmink');
 	}
+
+	public function index()
+	{
+		$this->load->model('Mkamar');
+		$kamars = $this->Mkamar->getAllKamar();
+
+		foreach ($kamars as &$kamar) {
+			$status_counts = $this->Mkamar->getKamarStatusCount($kamar->id_kamar);
+			$kamar->tersedia = 0;
+			$kamar->tidak_tersedia = 0;
+			foreach ($status_counts as $status_count) {
+				if ($status_count->status_ketersediaan == 'Tersedia') {
+					$kamar->tersedia = $status_count->count;
+				} elseif ($status_count->status_ketersediaan == 'Tidak Tersedia') {
+					$kamar->tidak_tersedia = $status_count->count;
+				}
+			}
+		}
+
+		$data['hasil'] = $kamars;
+		$this->load->view('adminK', $data);
+	}
 }

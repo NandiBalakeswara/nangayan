@@ -33,11 +33,22 @@ class Mkamar extends CI_Model
 		$this->db->group_by('tbkamar.id_kamar');
 		$query = $this->db->get();
 
-		if ($query->num_rows() > 0) {
-			return $query->result();
-		} else {
-			return array();
+		$result = $query->result();
+
+		foreach ($result as $data) {
+			$status_counts = $this->getKamarStatusCount($data->id_kamar);
+			$data->tersedia = 0;
+			$data->tidak_tersedia = 0;
+			foreach ($status_counts as $status) {
+				if ($status->status_ketersediaan == 'Tersedia') {
+					$data->tersedia = $status->count;
+				} else {
+					$data->tidak_tersedia = $status->count;
+				}
+			}
 		}
+
+		return $result;
 	}
 
 	function upload($uploadFile, $field, $nama)
@@ -92,5 +103,23 @@ class Mkamar extends CI_Model
 		$this->db->trans_complete(); // Akhiri transaksi
 
 		return $this->db->trans_status();
+	}
+
+	public function getKamarStatusCount($id_kamar)
+	{
+		$this->db->select('status_ketersediaan, COUNT(*) as count');
+		$this->db->from('tbnokamar');
+		$this->db->where('id_kamar', $id_kamar);
+		$this->db->group_by('status_ketersediaan');
+		$query = $this->db->get();
+		return $query->result();
+	}
+
+	public function getAllKamar()
+	{
+		$this->db->select('*');
+		$this->db->from('tbkamar');
+		$query = $this->db->get();
+		return $query->result();
 	}
 }
