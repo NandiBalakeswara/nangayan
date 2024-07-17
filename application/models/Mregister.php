@@ -10,7 +10,7 @@ class Mregister extends CI_Model {
         $query = $this->db->get('tbpengguna');
 
         if ($query->num_rows() > 0) {
-            $this->session->set_flashdata('pesan', 'Username sudah terdaftar');
+            $this->session->set_flashdata('pesan', 'Email sudah terdaftar');
             redirect('cregister/formregister');
         } else {
             $dataToInsert = [
@@ -33,10 +33,11 @@ class Mregister extends CI_Model {
         $mail = PHPMailerConfig::getMailer();
         if ($mail) {
             try {
+                $loginUrl = base_url('clogin/formlogin');
                 $mail->addAddress($toEmail, $toName);
                 $mail->Subject = 'Notification Email NangAyan Hotel';
-                $mail->Body    = 'Registration Success. Thank you for registering with us.';
-                $mail->AltBody = 'Registration Success. Thank you for registering with us.';
+                $mail->Body    = 'Registration Success. Thank you for registering with us. Sign In using this link: <a href="' . base_url('clogin/formlogin') . '">Sign In</a>';
+                $mail->AltBody = 'Registration Success. Thank you for registering with us. Sign In using this link: ' . base_url('clogin/formlogin') ;
 
                 $mail->send();
                 return true;
