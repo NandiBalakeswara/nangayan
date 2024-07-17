@@ -66,9 +66,9 @@
             }
 
             // Validasi Password
-            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%_^&*]{8,}$/;
+            var passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[_])[A-Za-z\d_]{8,}$/;
             if (!passwordPattern.test(password)) {
-                errorMessage += "Password harus memiliki minimal 8 karakter dan terdiri dari kombinasi tanda baca, huruf besar, huruf kecil, dan angka.\n";
+                errorMessage += "Password harus memiliki minimal 8 karakter dan terdiri dari kombinasi underscore, huruf besar, huruf kecil, dan angka.\n";
             }
 
             // Validasi Jenis Kelamin

@@ -13,7 +13,9 @@ class Cregister extends CI_Controller {
     }
 
     public function simpandata() {
+        ob_start(); // Start 
         $result = $this->Mregister->simpandata();
+        ob_end_clean(); // End 
         if ($result) {
             $this->session->set_flashdata('pesan', 'Registrasi berhasil, silakan cek email untuk notifikasi.');
         } else {
