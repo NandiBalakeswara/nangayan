@@ -3,15 +3,18 @@ class Mawal extends CI_Model
 {
     public function getTopTwoRooms()
     {
-        $this->db->select('tbkamar.jenis_kamar, tbkamar.deskripsi_kamar, tbfoto.foto, COUNT(tbpemesanan.id_kamar) as total_pemesanan')
+        $query = $this->db
+            ->select('tbkamar.jenis_kamar, tbkamar.deskripsi_kamar, tbfoto.foto')
             ->from('tbpemesanan')
-            ->join('tbkamar', 'tbpemesanan.id_kamar = tbkamar.id_kamar')
-            ->join('tbfoto', 'tbkamar.id_kamar = tbfoto.id_foto')
-            ->group_by('tbpemesanan.id_kamar')
-            ->order_by('total_pemesanan', 'DESC')
-            ->limit(2);
+            ->join('tbpemesanan_detail', 'tbpemesanan.id_pemesanan = tbpemesanan_detail.id_pemesanan')
+            ->join('tbnokamar', 'tbpemesanan_detail.no_kamar = tbnokamar.no_kamar')
+            ->join('tbkamar', 'tbnokamar.id_kamar = tbkamar.id_kamar')
+            ->join('tbfoto', 'tbkamar.id_kamar = tbfoto.id_kamar')
+            ->group_by('tbkamar.id_kamar')
+            ->order_by('COUNT(tbpemesanan.id_pemesanan)', 'DESC')
+            ->limit(2)
+            ->get();
 
-        $query = $this->db->get();
         return $query->result();
     }
 

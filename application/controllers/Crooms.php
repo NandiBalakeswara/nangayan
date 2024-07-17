@@ -24,8 +24,14 @@ class Crooms extends CI_Controller
 
     function tampilroomdetails($id_kamar)
     {
+        $data['id_kamar'] = $id_kamar;
         $data['room'] = $this->mrooms->getRoomDetails($id_kamar);
         $data['photos'] = $this->mrooms->getRoomPhotos($id_kamar); // Menambahkan daftar foto
+
+        $this->session->set_userdata('id_kamar', $id_kamar);
+
+
+
         $this->load->view('roomdetails', $data);
     }
 

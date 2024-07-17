@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="<?php echo base_url('assets/styles/admin.css'); ?>">
+    <link rel="stylesheet" href="<?php echo base_url('assets/styles/css/admin.css'); ?>">
     <title>Admin-Laporan</title>
 </head>
+
 <body>
     <main>
         <?php include('sidebar.php') ?>
@@ -19,7 +21,7 @@
             <div class="table">
                 <table>
                     <thead>
-    
+
                         <tr>
                             <th>No</th>
                             <th>Bulan</th>
@@ -31,7 +33,7 @@
                     </thead>
                     <tbody>
                         <?php $no = 1; ?>
-                        <?php foreach ($report_data as $row): ?>
+                        <?php foreach ($report_data as $row) : ?>
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td><?= $row->bulan; ?></td>
@@ -47,5 +49,5 @@
         </div>
     </main>
 </body>
-</html>
 
+</html>

@@ -49,7 +49,7 @@
                                     <td><?php echo $data->deskripsi_kamar; ?></td>
                                     <td><?php echo $data->harga; ?></td>
                                     <td>
-                                        <?php echo 'Tersedia : '.$data->jumlah_tersedia .' | '.'Tidak Tersedia : '.$data->jumlah_tidak_tersedia; ?>   
+                                        <?php echo 'Tersedia : ' . $data->jumlah_tersedia . ' | ' . 'Tidak Tersedia : ' . $data->jumlah_tidak_tersedia; ?>
                                     </td>
                                     <td>
                                         <?php
