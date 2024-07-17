@@ -39,6 +39,17 @@ class Mlayanan extends CI_Model{
         $this->db->where('id_layanan', $id_layanan);
         $this->db->delete('tblayanan');
     }
+    function search($cari){
+        $this->db->like('tblayanan.nama_layanan', $cari);
+		$query = $this->db->get('tblayanan');
+		return $query->result();
+		if ($query->num_rows() > 0) {
+			return $query->result();
+		} else {
+			return array();
+		}
+        
+	}
 
 }
 ?>

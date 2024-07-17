@@ -18,7 +18,9 @@
             <div class="title">
                 <h1>Pengguna</h1>
                 <div class="search">
-                    <input type="search" placeholder="Cari Nama Pengguna">
+                    <form action="<?php echo base_url('cpengguna/search'); ?>" method="post">
+                        <input type="search" name="cari" placeholder="Cari Nama Penguna">
+                    </form>   
                 </div>
             </div>
             <div class="table">

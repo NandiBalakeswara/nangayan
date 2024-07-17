@@ -41,11 +41,16 @@ class Ckamar extends CI_Controller
 		redirect('ckamar/tampiladmink');
 	}
 
-
 	function hapusdata()
 	{
 		$data = $_POST;
 		$this->mkamar->hapusdata($data);
 		redirect('ckamar/tampiladmink');
+	}
+	function search()
+	{
+		$cari = $this->input->post('cari');
+		$data['hasil'] =$this->mkamar->search($cari);;
+		$this->load->view('adminK', $data);
 	}
 }

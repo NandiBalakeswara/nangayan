@@ -17,6 +17,11 @@
             </div>
             <div class="title">
                 <h1>Pemesanan</h1>
+                <div class="search">
+                    <form action="<?php echo base_url('cadmin/search'); ?>" method="post">
+                        <input type="search" name="cari" placeholder="Cari Nama Penguna">
+                    </form>   
+                </div>
             </div>
             <div class="table">
                 <table>
@@ -55,7 +60,7 @@
                                     <td><?php echo $pesan->kode_pembayaran; ?></td>
                                     <td>Rp. <?php echo number_format($pesan->total_pembayaran, 0, ',', '.'); ?></td>
                                     <td><?php echo $pesan->jumlah_pesanan; ?></td>
-                                    <td>1<?php //echo $pesan->nomor_kamar; 
+                                    <td><?php echo $pesan->no_kamar; 
                                             ?></td>
                                     <th>
                                         <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>

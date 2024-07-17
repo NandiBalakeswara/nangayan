@@ -63,6 +63,11 @@ class Cadmin extends CI_Controller {
 		// Redirect atau lakukan operasi lain sesuai kebutuhan
 		redirect('cadmin/tampiladminpesan');
 	}
-	
+	function search()
+	{
+		$cari = $this->input->post('cari');
+		$data['pemesanan'] =$this->madmin->search($cari);;
+		$this->load->view('adminpesan', $data);
+	}
 }
 ?>

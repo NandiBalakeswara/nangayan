@@ -24,6 +24,11 @@ function hapusdatapengguna()
 			$this->mpengguna->hapusdatapengguna($data);
 			redirect('cpengguna/tampiladminp');
 		}
-		
+		function search()
+		{
+			$cari = $this->input->post('cari');
+			$data['hasil'] =$this->mpengguna->search($cari);;
+			$this->load->view('adminP', $data);
+		}
 }
 ?>
