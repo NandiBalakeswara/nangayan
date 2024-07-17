@@ -50,7 +50,7 @@ class Ckamar extends CI_Controller
 	function search()
 	{
 		$cari = $this->input->post('cari');
-		$data['hasil'] =$this->mkamar->search($cari);;
+		$data['hasil'] = $this->mkamar->search($cari);;
 		$this->load->view('adminK', $data);
 	}
 }
