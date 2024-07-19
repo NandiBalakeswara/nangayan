@@ -64,7 +64,7 @@
                         <div class="form-wrapper-info">
                             <label for="id_layanan_1">Layanan Tambahan</label>
                             <select name="id_layanan" id="id_layanan_1">
-                                <option value="">Pilih Layanan Tambahan</option>
+                                <option value="" disabled>Pilih Layanan Tambahan</option>
                                 <?php foreach ($layananList as $layanan) : ?>
                                     <option value="<?php echo $layanan->id_layanan; ?>"><?php echo $layanan->nama_layanan; ?></option>
                                 <?php endforeach; ?>

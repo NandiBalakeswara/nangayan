@@ -124,7 +124,7 @@
                         </div>
                         <div class="form-wrapper">
                             <label for="password">Password</label>
-                            <input type="text" class="form-control" name="password" placeholder="ex. Ar_10grande" required>
+                            <input type="password" class="form-control" name="password" placeholder="ex. Ar_10grande" required>
                         </div>
                     </div>
                     <div class="form-group">

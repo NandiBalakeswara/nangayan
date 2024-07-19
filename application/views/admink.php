@@ -158,11 +158,11 @@
                             <div class="form-group">
                                 <div class="form-wrapper">
                                     <label for="">Jumlah Kamar</label>
-                                    <input type="text" name="nomor_kamar" disabled>
+                                    <input type="text" name="" disabled>
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="foto1">Foto 1</label>
-                                    <input type="file" name="foto" disabled>
+                                    <input type="file" id="foto1" name="foto1" accept="image/*" required>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -215,22 +215,22 @@
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="foto1">Foto 1</label>
-                                    <input type="file" name="foto" disabled>
+                                    <input type="file" id="foto1" name="foto1" accept="image/*" required disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
                                     <label for="foto2">Foto 2</label>
-                                    <input type="file" id="foto2" name="foto2" accept="image/*" required>
+                                    <input type="file" id="foto2" name="foto2" accept="image/*" required disabled>
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="foto3">Foto 3</label>
-                                    <input type="file" id="foto3" name="foto3" accept="image/*" required>
+                                    <input type="file" id="foto3" name="foto3" accept="image/*" required disabled>
                                 </div>
                             </div>
                             <div class="btn">
-                                <button type="submit" style="background-color: #E0B973;">Edit</button>
-                                <button type="reset" style="background-color: #626262;">Reset</button>
+                                <button type="submit" style="background-color: #D85050;">Hapus</button>
+                                <button type="reset" style="background-color: #626262;" disabled>Reset</button>
                             </div>
                         </form>
                     </div>

@@ -50,7 +50,7 @@
                                 }
                                 ?>
                             </div>
-                            <div class="navigation">
+                            <!-- <div class="navigation">
                                 <?php
                                 for ($i = 0; $i < count($foto_urls); $i++) {
                                 ?>
@@ -58,7 +58,7 @@
                                 <?php
                                 }
                                 ?>
-                            </div>
+                            </div> -->
                             <div class="status-kamar">
                                 <h2><?php echo $booking->jenis_kamar; ?></h2>
                             </div>

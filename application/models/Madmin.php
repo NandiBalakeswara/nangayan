@@ -39,7 +39,7 @@ class Madmin extends CI_Model
     }
 
 
-    public function updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran, $kode_pembayaran, $nomor_kamar)
+    public function updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran, $kode_pembayaran)
     {
         $data = array(
             'id_pengguna' => $id_pengguna,
@@ -47,8 +47,8 @@ class Madmin extends CI_Model
             'id_layanan' => $id_layanan,
             'status_pemesanan' => $status_pemesanan,
             'status_pembayaran' => $status_pembayaran,
-            'kode_pembayaran' => $kode_pembayaran,
-            'nomor_kamar' => $nomor_kamar
+            'kode_pembayaran' => $kode_pembayaran
+            // 'nomor_kamar' => $nomor_kamar
         );
 
         $this->db->where('id_pemesanan', $id_pemesanan);
@@ -60,8 +60,9 @@ class Madmin extends CI_Model
         $this->db->where('id_pemesanan', $id_pemesanan);
         $this->db->delete('tbpemesanan');
     }
-    function search($cari){
-       
+    function search($cari)
+    {
+
         $this->db->select('tbpemesanan.*, tbpengguna.nama_lengkap, tbkamar.jenis_kamar, tbkamar.harga, tblayanan.nama_layanan, tblayanan.harga_layanan, GROUP_CONCAT(tbpemesanan_detail.no_kamar SEPARATOR ", ") AS no_kamar, DATEDIFF(tbpemesanan.waktu_keluar, tbpemesanan.waktu_masuk) AS jumlah_hari');
         $this->db->from('tbpemesanan');
         $this->db->join('tbpengguna', 'tbpengguna.id_pengguna = tbpemesanan.id_pengguna');
@@ -97,7 +98,5 @@ class Madmin extends CI_Model
         $result = array_values($result);
 
         return $result;
-        
     }
-   
 }

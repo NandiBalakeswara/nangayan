@@ -1,41 +1,43 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Cadmin extends CI_Controller {
+class Cadmin extends CI_Controller
+{
 
-    public function __construct()
+	public function __construct()
 	{
-		parent :: __construct();
+		parent::__construct();
 		$this->load->model('madmin');
 	}
 
-    function tampiladminp()
+	function tampiladminp()
 	{
-		$this->load->view('adminP');	
+		$this->load->view('adminP');
 	}
 
 	function tampiladmink()
 	{
-		$this->load->view('adminK');	
+		$this->load->view('adminK');
 	}
 
 	function tampiladminl()
 	{
-		$this->load->view('adminL');	
+		$this->load->view('adminL');
 	}
 
 	function tampiladminr()
 	{
-		$this->load->view('adminR');	
+		$this->load->view('adminR');
 	}
 
-    public function tampiladminpesan()
-    {
-        $data['pemesanan'] = $this->madmin->tampildatapemesan();
-        $this->load->view('adminpesan', $data);
-    }
+	public function tampiladminpesan()
+	{
+		$data['pemesanan'] = $this->madmin->tampildatapemesan();
+		$this->load->view('adminpesan', $data);
+	}
 
-	public function updatepemesanan(){
+	public function updatepemesanan()
+	{
 		// Ambil nilai dari formulir
 		$id_pemesanan = $this->input->post('id_pemesanan');
 		$id_pengguna = $this->input->post('id_pengguna');
@@ -44,30 +46,30 @@ class Cadmin extends CI_Controller {
 		$status_pemesanan = $this->input->post('status_pemesanan');
 		$status_pembayaran = $this->input->post('status_pembayaran');
 		$kode_pembayaran = $this->input->post('kode_pembayaran');
-		$nomor_kamar = $this->input->post('nomor_kamar');
-	
+		// $nomor_kamar = $this->input->post('nomor_kamar');
+
 		// Panggil model untuk melakukan update
-		$this->madmin->updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran,$kode_pembayaran,$nomor_kamar);
-	
+		$this->madmin->updateDataPemesanan($id_pemesanan, $id_pengguna, $id_kamar, $id_layanan, $status_pemesanan, $status_pembayaran, $kode_pembayaran);
+
 		// Redirect atau lakukan operasi lain sesuai kebutuhan
 		redirect('cadmin/tampiladminpesan');
 	}
 
-	public function hapuspemesanan(){
+	public function hapuspemesanan()
+	{
 		// Ambil nilai ID pemesanan dari formulir
 		$id_pemesanan = $this->input->post('id_pemesanan');
-	
+
 		// Panggil model untuk melakukan hapus
 		$this->madmin->hapusDataPemesanan($id_pemesanan);
-	
+
 		// Redirect atau lakukan operasi lain sesuai kebutuhan
 		redirect('cadmin/tampiladminpesan');
 	}
 	function search()
 	{
 		$cari = $this->input->post('cari');
-		$data['pemesanan'] =$this->madmin->search($cari);;
+		$data['pemesanan'] = $this->madmin->search($cari);;
 		$this->load->view('adminpesan', $data);
 	}
 }
-?>

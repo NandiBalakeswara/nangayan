@@ -427,7 +427,7 @@ main{
 .card img{
     flex: 2;
     width: 30rem;
-    height: auto;
+    height: 15rem;
     object-fit: cover;
     object-position: center;
 }
@@ -564,6 +564,12 @@ main{
 .picture .rooms_img_left{
     padding: 5px;
     flex: 2;
+    height: 33rem;
+
+}
+
+.picture .rooms_img_left img{
+    height: 31.5rem;
 }
 
 .picture .rooms_img_right{

@@ -20,7 +20,7 @@
                 <div class="search">
                     <form action="<?php echo base_url('cadmin/search'); ?>" method="post">
                         <input type="search" name="cari" placeholder="Cari Nama Penguna">
-                    </form>   
+                    </form>
                 </div>
             </div>
             <div class="table">
@@ -60,8 +60,8 @@
                                     <td><?php echo $pesan->kode_pembayaran; ?></td>
                                     <td>Rp. <?php echo number_format($pesan->total_pembayaran, 0, ',', '.'); ?></td>
                                     <td><?php echo $pesan->jumlah_pesanan; ?></td>
-                                    <td><?php echo $pesan->no_kamar; 
-                                            ?></td>
+                                    <td><?php echo $pesan->no_kamar;
+                                        ?></td>
                                     <th>
                                         <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
                                         <button id="myBtn-dlt_<?php echo $no; ?>" onclick="openModalDelete(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>
@@ -146,7 +146,7 @@
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="">Nomor Kamar</label>
-                                    <input type="text" name="nomor_kamar" id="nomor_kamar" value="<?php echo $pesan->nomor_kamar; ?>">
+                                    <input type="text" name="" id="nomor_kamar" value="<?php echo $pesan->no_kamar ?>" disabled>
                                 </div>
                             </div>
                             <div class="btn">
@@ -210,7 +210,7 @@
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="">Nomor Kamar</label>
-                                    <input type="text" name="" id="" disabled value="<?php echo $pesan->nomor_kamar; ?>">
+                                    <input type="text" name="" id="" disabled value="<?php echo $pesan->no_kamar; ?>">
                                 </div>
                             </div>
                             <div class="btn">
