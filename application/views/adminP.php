@@ -17,10 +17,11 @@
             </div>
             <div class="title">
                 <h1>Pengguna</h1>
-                <div class="search">
+                <div class="btn-room">
                     <form action="<?php echo base_url('cpengguna/search'); ?>" method="post">
                         <input type="search" name="cari" placeholder="Cari Nama Penguna">
-                    </form>   
+                    </form>
+                    <button style="background-color: #626262;" onclick="window.location.href='<?php echo base_url('cpengguna/tampiladminp'); ?>'">Reset</button>
                 </div>
             </div>
             <div class="table">

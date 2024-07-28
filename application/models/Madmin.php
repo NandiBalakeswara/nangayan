@@ -11,7 +11,7 @@ class Madmin extends CI_Model
         $this->db->join('tblayanan', 'tblayanan.id_layanan = tbpemesanan.id_layanan');
         $this->db->join('tbpemesanan_detail', 'tbpemesanan_detail.id_pemesanan = tbpemesanan.id_pemesanan');
         $this->db->group_by(array('tbpengguna.id_pengguna', 'tbkamar.id_kamar', 'tblayanan.id_layanan', 'tbpemesanan.waktu_masuk', 'tbpemesanan.waktu_keluar'));
-        $this->db->order_by('tbpemesanan.id_pemesanan', 'asc');
+        $this->db->order_by('tbpemesanan.id_pemesanan', 'desc');
         $query = $this->db->get();
         $result = [];
 

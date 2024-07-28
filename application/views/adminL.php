@@ -26,6 +26,7 @@
                     <form action="<?php echo base_url('clayanan/search'); ?>" method="post">
                         <input type="search" name="cari" placeholder="Cari Layanan">
                     </form>
+                    <button style="background-color: #626262;" onclick="window.location.href='<?php echo base_url('clayanan/tampiladminl'); ?>'">Reset</button>
                     <button id="myBtn-add" style="background-color: #5973D0;">Tambah</button>
                 </div>
             </div>
@@ -82,7 +83,8 @@
                             <label for="nama_layanan">Jenis Layanan</label>
                             <input type="text" name="nama_layanan">
                             <label for="deskripsi-layanan">Deskripsi</label>
-                            <input type="text" name="deskripsi_layanan" id="deskripsi_layanan">
+                            <!-- <input type="text" name="deskripsi_layanan" id="deskripsi_layanan"> -->
+                            <textarea name="deskripsi_layanan" id="deskripsi_layanan"></textarea>
                             <label for="harga">Harga</label>
                             <input type="text" name="harga_layanan" id="harga_layanan">
                         </div>
@@ -109,7 +111,8 @@
                                 <label for="nama_layanan">Jenis Layanan</label>
                                 <input type="text" name="nama_layanan" value="<?php echo $data->nama_layanan; ?>">
                                 <label for="deskripsi_layanan">Deskripsi</label>
-                                <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>">
+                                <!-- <input type="text" name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>"> -->
+                                <textarea col="5" name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>"><?php echo $data->deskripsi_layanan; ?></textarea>
                                 <label for="harga">Harga</label>
                                 <input type="text" name="harga_layanan" id="harga_layanan" value="<?php echo $data->harga_layanan; ?>">
                             </div>
@@ -140,7 +143,7 @@
                                 <label for="tambah-nama_layanan">Jenis Layanan</label>
                                 <input type="text" name="nama_layanan" disabled value="<?php echo $data->nama_layanan; ?>">
                                 <label for="tambah-deskripsi-layanan">Deskripsi</label>
-                                <input type="text" name="deskripsi_layanan" id="tambah-deskripsi_layanan" disabled value="<?php echo $data->deskripsi_layanan; ?>">
+                                <textarea name="deskripsi_layanan" id="deskripsi_layanan" value="<?php echo $data->deskripsi_layanan; ?>" disabled><?php echo $data->deskripsi_layanan; ?></textarea>
                                 <label for="tambah-harga">Harga</label>
                                 <input type="text" name="harga_layanan" id="tambah-harga_layanan" disabled value="<?php echo $data->harga_layanan; ?>">
                                 <div class="btn">

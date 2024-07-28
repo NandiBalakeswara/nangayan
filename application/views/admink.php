@@ -26,6 +26,7 @@
                     <form action="<?php echo base_url('ckamar/search'); ?>" method="post">
                         <input type="search" name="cari" placeholder="Cari Kamar">
                     </form>
+                    <button style="background-color: #626262;" onclick="window.location.href='<?php echo base_url('ckamar/tampiladmink'); ?>'">Reset</button>
                     <button id="myBtn-add" style="background-color: #5973D0;">Tambah</button>
                 </div>
             </div>
@@ -49,7 +50,7 @@
                         ?>
                                 <tr>
                                     <td><?php echo $data->jenis_kamar; ?></td>
-                                    <td><?php echo $data->deskripsi_kamar; ?></td>
+                                    <td><?php echo substr($data->deskripsi_kamar, 0, 20); ?></td>
                                     <td><?php echo $data->harga; ?></td>
                                     <td>
                                         <?php echo 'Tersedia : ' . $data->jumlah_tersedia . ' | ' . 'Tidak Tersedia : ' . $data->jumlah_tidak_tersedia; ?>
@@ -99,7 +100,8 @@
                         </div>
                         <div class="form-wrapper-rooms">
                             <label for="deskripsi_kamar">Deskripsi</label>
-                            <input type="text" id="deskripsi_kamar" name="deskripsi_kamar" required>
+                            <!-- <input type="text" id="deskripsi_kamar" name="deskripsi_kamar" required> -->
+                            <textarea rows="3" name="deskripsi_kamar" id="deskripsi_kamar" require></textarea>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
@@ -107,17 +109,17 @@
                                 <input type="number" id="nomor_kamar" name="nomor_kamar">
                             </div>
                             <div class="form-wrapper">
-                                <label for="foto1">Foto 1</label>
+                                <label for="foto1">Foto Kamar</label>
                                 <input type="file" id="foto1" name="foto1" accept="image/*" required>
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="form-wrapper">
-                                <label for="foto2">Foto 2</label>
+                                <label for="foto2">Foto Kamar Mandi</label>
                                 <input type="file" id="foto2" name="foto2" accept="image/*" required>
                             </div>
                             <div class="form-wrapper">
-                                <label for="foto3">Foto 3</label>
+                                <label for="foto3">Foto Tambahan</label>
                                 <input type="file" id="foto3" name="foto3" accept="image/*" required>
                             </div>
                         </div>
@@ -153,7 +155,8 @@
                             </div>
                             <div class="form-wrapper-rooms">
                                 <label for="">Deskripsi</label>
-                                <input type="text" name="deskripsi_kamar" value="<?php echo $data->deskripsi_kamar; ?>">
+                                <!-- <input type="text" name="deskripsi_kamar" value="<?php echo $data->deskripsi_kamar; ?>"> -->
+                                <textarea rows="5" name="deskripsi_kamar" value="<?php $data->deskripsi_kamar; ?>"><?php echo $data->deskripsi_kamar; ?><?php echo $data->deskripsi_kamar; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
@@ -161,17 +164,17 @@
                                     <input type="text" name="" disabled>
                                 </div>
                                 <div class="form-wrapper">
-                                    <label for="foto1">Foto 1</label>
+                                    <label for="foto1">Foto Kamar</label>
                                     <input type="file" id="foto1" name="foto1" accept="image/*" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
-                                    <label for="foto2">Foto 2</label>
+                                    <label for="foto2">Foto Kamar Mandi</label>
                                     <input type="file" id="foto2" name="foto2" accept="image/*" required>
                                 </div>
                                 <div class="form-wrapper">
-                                    <label for="foto3">Foto 3</label>
+                                    <label for="foto3">Foto Tambahan</label>
                                     <input type="file" id="foto3" name="foto3" accept="image/*" required>
                                 </div>
                             </div>
@@ -206,7 +209,7 @@
                             </div>
                             <div class="form-wrapper-rooms">
                                 <label for="">Deskripsi</label>
-                                <input type="text" name="deskripsi_kamar" disabled value="<?php echo $data->deskripsi_kamar; ?>">
+                                <textarea rows="5" name="deskripsi_kamar" value="<?php $data->deskripsi_kamar; ?>" disabled><?php echo $data->deskripsi_kamar; ?><?php echo $data->deskripsi_kamar; ?></textarea>
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
@@ -214,17 +217,17 @@
                                     <input type="text" name="nomor_kamar" disabled>
                                 </div>
                                 <div class="form-wrapper">
-                                    <label for="foto1">Foto 1</label>
+                                    <label for="foto1">Foto Kamar</label>
                                     <input type="file" id="foto1" name="foto1" accept="image/*" required disabled>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="form-wrapper">
-                                    <label for="foto2">Foto 2</label>
+                                    <label for="foto2">Foto Kamar Mandi</label>
                                     <input type="file" id="foto2" name="foto2" accept="image/*" required disabled>
                                 </div>
                                 <div class="form-wrapper">
-                                    <label for="foto3">Foto 3</label>
+                                    <label for="foto3">Foto Tambahan</label>
                                     <input type="file" id="foto3" name="foto3" accept="image/*" required disabled>
                                 </div>
                             </div>

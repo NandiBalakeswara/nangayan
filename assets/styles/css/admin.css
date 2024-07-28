@@ -162,7 +162,7 @@ aside .menu .logout h2{
     margin-bottom: 10px;
     margin-right: 10px;
     width: fit-content;
-    margin-left: 35rem;
+    margin-left: 32rem;
     gap: 1rem;
 }
 
@@ -369,7 +369,7 @@ aside .menu .logout h2{
     margin: 3px 0;
 }
 
-.modal-content-add form .form-wrapper-rooms input, select{
+.modal-content-add form .form-wrapper-rooms input, select, textarea{
     margin: 3px 0;
     background-color: white;
     border: 2px #f0f1f5 solid;
@@ -508,7 +508,7 @@ aside .menu .logout h2{
     margin: 3px 0;
 }
 
-.modal-content form .form-wrapper-rooms input, .modal-content form .form-wrapper-rooms select{
+.modal-content form .form-wrapper-rooms input, .modal-content form .form-wrapper-rooms select, .modal-content form .form-wrapper-rooms textarea{
     margin: 3px 0;
     background-color: white;
     border: 2px #f0f1f5 solid;
@@ -619,7 +619,7 @@ aside .menu .logout h2{
     margin: 3px 0;
 }
 
-.modal-content-delete form .form-group .form-wrapper input, select{
+.modal-content-delete form .form-group .form-wrapper input, select, textarea{
     margin: 3px 0;
     background-color: white;
     border: 2px #f0f1f5 solid;
