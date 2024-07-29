@@ -125,7 +125,7 @@
             </div>
         </div>
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
     <script>
         var jenis_kamar = $('#jenis_kamar').val();
         var harga_kamar = $('#harga_kamar').val();

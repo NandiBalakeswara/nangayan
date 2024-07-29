@@ -41,11 +41,12 @@
                     <tbody>
                         <?php
                         if (empty($hasil)) {
-                            echo "Data Kosong";
+                        ?><td>Data Kosong</td>
+                            <?php
                         } else {
                             $no = 1;
                             foreach ($hasil as $data) :
-                        ?>
+                            ?>
 
                                 <tr id='baris'>
                                     <td><?php echo $no ?></td>

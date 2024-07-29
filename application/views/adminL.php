@@ -45,17 +45,18 @@
                     <tbody>
                         <?php
                         if (empty($hasil)) {
-                            echo "Data Kosong";
+                        ?><td>Data Kosong</td>
+                            <?php
                         } else {
                             $no = 1;
                             foreach ($hasil as $data) :
-                        ?>
+                            ?>
 
                                 <tr id='baris'>
                                     <td><?php echo $no ?></td>
                                     <td><?php echo $data->nama_layanan; ?></td>
                                     <td><?php echo $data->deskripsi_layanan; ?></td>
-                                    <td><?php echo $data->harga_layanan; ?></td>
+                                    <td>Rp. <?php echo number_format($data->harga_layanan, 0, ',', '.'); ?></td>
                                     <th>
                                         <button id="myBtn_<?php echo $no; ?>" onclick="openModalEdit(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/edit2.png'); ?>" alt="edit"></button>
                                         <button id="myBtn-dlt_<?php echo $no; ?>" onclick="openModalDelete(<?php echo $no; ?>)"><img src="<?php echo base_url('assets/styles/image/delete3.png'); ?>" alt="delete"></button>

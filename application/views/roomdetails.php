@@ -70,7 +70,7 @@
                 </article>
             </div>
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
 
     <script>
         function logout() {

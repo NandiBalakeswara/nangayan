@@ -51,7 +51,7 @@
                                 <tr>
                                     <td><?php echo $data->jenis_kamar; ?></td>
                                     <td><?php echo substr($data->deskripsi_kamar, 0, 20); ?></td>
-                                    <td><?php echo $data->harga; ?></td>
+                                    <td>Rp. <?php echo number_format($data->harga, 0, ',', '.'); ?></td>
                                     <td>
                                         <?php echo 'Tersedia : ' . $data->jumlah_tersedia . ' | ' . 'Tidak Tersedia : ' . $data->jumlah_tidak_tersedia; ?>
                                     </td>

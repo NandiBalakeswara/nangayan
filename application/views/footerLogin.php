@@ -4,9 +4,9 @@
     <br>Jl. Sumandang VI. No 10 <br> +62 881-0375-51260 <br> nangayan_hotel@gmail.com
   </div>
   <div class="about">
-    <p><a href="<?php echo base_url('footer/showAboutUs'); ?>">About Us</a></p>
+    <p><a href="<?php echo base_url('footer/showAboutUsLogin'); ?>">About Us</a></p>
     <p><a href="http://wa.me/62881037551260 " target="_blank">Contact</a></p>
-    <p><a href="<?= base_url('footer/showTermAndCondition') ?>">Term & Condition</a></p>
+    <p><a href="<?= base_url('footer/showTermAndConditionLogin') ?>">Term & Condition</a></p>
   </div>
   <div class="social">
     <p>Facebook</p>

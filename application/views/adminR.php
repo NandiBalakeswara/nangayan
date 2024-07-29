@@ -23,32 +23,42 @@
                 </div>
             </div>
             <div class="table">
-                <table>
-                    <thead>
-
-                        <tr>
-                            <th>No</th>
-                            <th>Bulan</th>
-                            <th>Tahun</th>
-                            <th>Jenis Kamar</th>
-                            <th>Jumlah pemesanan</th>
-                            <th>Pendapatan</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php $no = 1; ?>
-                        <?php foreach ($report_data as $row) : ?>
+                <?php if ($is_empty) : ?>
+                    <p style="color: red; text-align: center;">Tidak ada data pada bulan dan tahun tersebut.</p>
+                <?php else : ?>
+                    <table>
+                        <thead>
                             <tr>
-                                <td><?= $no++; ?></td>
-                                <td><?= $row['bulan']; ?></td>
-                                <td><?= $row['tahun']; ?></td>
-                                <td><?= $row['jenis_kamar']; ?></td>
-                                <td><?= $row['jumlah_pemesanan']; ?></td>
-                                <td><?= $row['pendapatan']; ?></td>
+                                <th>No</th>
+                                <th>Bulan</th>
+                                <th>Tahun</th>
+                                <th>Jenis Kamar</th>
+                                <th>Nama Layanan</th>
+                                <th>Jumlah Pemesanan</th>
+                                <th>Pendapatan</th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php $no = 1; ?>
+                            <?php foreach ($report_data as $row) : ?>
+                                <tr>
+                                    <td><?= $no++; ?></td>
+                                    <td><?= $row->bulan; ?></td>
+                                    <td><?= $row->tahun; ?></td>
+                                    <td><?= $row->jenis_kamar; ?></td>
+                                    <td><?= $row->nama_layanan; ?></td>
+                                    <td><?= $row->jumlah_pemesanan; ?></td>
+                                    <td>Rp. <?= number_format($row->total_harga, 0, ',', '.'); ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                            <tr>
+                                <td colspan="5" style="font-weight: bold;">Total Pendapatan</td>
+                                <td style="font-weight: bold;">:</td>
+                                <td colspan="">Rp. <?= number_format($total_pendapatan, 0, ',', '.'); ?></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                <?php endif; ?>
             </div>
             <div id="myModal-add" class="modaladd">
                 <div class="modal-content-add">
@@ -69,7 +79,13 @@
                         </div>
                         <div class="form-wrapper-rooms">
                             <label for="jenis_kamar">Jenis Kamar</label>
-                            <input type="text" id="jenis_kamar" name="jenis_kamar">
+                            <select name="jenis_kamar" id="jenis_kamar">
+                                <option value="">Pilih Jenis Kamar</option>
+                                <?php foreach ($jenis_kamar_list as $jenis_kamar) : ?>
+                                    <option value="<?= $jenis_kamar->jenis_kamar; ?>"><?= $jenis_kamar->jenis_kamar; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <!-- <input type="text" id="jenis_kamar" name="jenis_kamar"> -->
                         </div>
                         <!-- <div class="form-group">
                             <div class="form-wrapper">

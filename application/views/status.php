@@ -138,7 +138,7 @@
             ?>
         </div>
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
 
     <script>
         var slides = document.querySelectorAll('.bg');

@@ -3,7 +3,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Creport extends CI_Controller
 {
-
     public function __construct()
     {
         parent::__construct();
@@ -15,6 +14,11 @@ class Creport extends CI_Controller
     {
         // Get data from the model
         $data['report_data'] = $this->mreport->datareport();
+        $data['total_pendapatan'] = $this->mreport->getTotalPendapatan();
+        $data['jenis_kamar_list'] = $this->mreport->getAllJenisKamar(); // Ambil jenis kamar
+
+        // Check if the report_data is empty
+        $data['is_empty'] = empty($data['report_data']);
 
         // Load view with data
         $this->load->view('adminR', $data);
@@ -27,12 +31,16 @@ class Creport extends CI_Controller
             'bulan' => $this->input->post('bulan'),
             'tahun' => $this->input->post('tahun'),
             'jenis_kamar' => $this->input->post('jenis_kamar'),
-            'jumlah_pesanan' => $this->input->post('jumlah_pesanan'),
-            'pendapatan' => $this->input->post('pendapatan')
+            'nama_layanan' => $this->input->post('nama_layanan')
         ];
 
         // Get filtered data from the model
         $data['report_data'] = $this->mreport->searchReport($criteria);
+        $data['total_pendapatan'] = $this->mreport->getTotalPendapatan($criteria);
+        $data['jenis_kamar_list'] = $this->mreport->getAllJenisKamar(); // Ambil jenis kamar
+
+        // Check if the report_data is empty
+        $data['is_empty'] = empty($data['report_data']);
 
         // Load view with data
         $this->load->view('adminR', $data);

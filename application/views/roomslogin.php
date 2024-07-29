@@ -68,7 +68,7 @@
         </div>
 
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
     <script type="text/javascript">
         var slides = document.querySelectorAll('.bg');
         var btns = document.querySelectorAll('.btn');

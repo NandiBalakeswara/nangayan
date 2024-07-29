@@ -84,7 +84,7 @@
             </div>
         </div>
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
     <script>
         function submitForm() {
             document.getElementById("bookingForm").submit();

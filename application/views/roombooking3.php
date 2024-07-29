@@ -28,7 +28,7 @@
             </div>
         </div>
     </main>
-    <?php include('footer.php'); ?>
+    <?php include('footerLogin.php'); ?>
 </body>
 
 </html>
