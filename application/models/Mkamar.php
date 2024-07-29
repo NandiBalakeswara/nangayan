@@ -86,30 +86,6 @@ class Mkamar extends CI_Model
 		$this->db->delete('tbkamar');
 	}
 
-	function tambahNomorKamar($id_kamar, $nomor_kamar)
-	{
-		$this->db->trans_start(); // Memulai transaksi
-
-		// Cek apakah nomor kamar sudah ada di tbnokamar
-		$this->db->where('id_kamar', $id_kamar);
-		$query_nokamar = $this->db->get('tbnokamar');
-
-		if ($query_nokamar->num_rows() == 0) {
-			// Jika belum ada, masukkan nomor kamar ke tbnokamar
-			for ($i = 1; $i <= $nomor_kamar; $i++) {
-				$data = array(
-					'id_kamar' => $id_kamar,
-					'no_kamar' => $i,
-					'status_ketersediaan' => 'Tersedia'
-				);
-				$this->db->insert('tbnokamar', $data);
-			}
-		}
-
-		$this->db->trans_complete(); // Akhiri transaksi
-
-		return $this->db->trans_status();
-	}
 	function search($cari)
 	{
 		$this->db->select('tbkamar.*, 
@@ -130,4 +106,65 @@ class Mkamar extends CI_Model
 			return array();
 		}
 	}
+	// Fungsi untuk menambahkan nomor kamar baru ke tbnokamar
+    function tambahNomorKamar($id_kamar, $tambahan_kamar)
+    {
+        $this->db->trans_start(); // Memulai transaksi
+
+        // Ambil jumlah kamar yang sudah ada
+        $this->db->select_max('no_kamar');
+        $this->db->where('id_kamar', $id_kamar);
+        $query = $this->db->get('tbnokamar');
+        $row = $query->row();
+        $last_no_kamar = $row ? $row->no_kamar : 0;
+
+        // Tambahkan kamar baru dengan nomor urut berikutnya
+        for ($i = 1; $i <= $tambahan_kamar; $i++) {
+            $no_kamar_baru = $last_no_kamar + $i;
+            $data = array(
+                'id_kamar' => $id_kamar,
+                'no_kamar' => $no_kamar_baru,
+                'status_ketersediaan' => 'Tersedia'
+            );
+            $this->db->insert('tbnokamar', $data);
+        }
+
+        $this->db->trans_complete(); // Akhiri transaksi
+
+        return $this->db->trans_status();
+    }
+
+    // Fungsi untuk mengurangi nomor kamar dari tbnokamar
+    function hapusNomorKamar($id_kamar, $kurang_kamar)
+    {
+        $this->db->trans_start(); // Memulai transaksi
+
+        // Ambil nomor kamar tertinggi
+        $this->db->select('no_kamar');
+        $this->db->where('id_kamar', $id_kamar);
+        $this->db->order_by('no_kamar', 'DESC');
+        $this->db->limit($kurang_kamar);
+        $query = $this->db->get('tbnokamar');
+        $kamar_hapus = $query->result();
+
+        // Hapus kamar dengan nomor tertinggi
+        foreach ($kamar_hapus as $kamar) {
+            $this->db->where('id_kamar', $id_kamar);
+            $this->db->where('no_kamar', $kamar->no_kamar);
+            $this->db->delete('tbnokamar');
+        }
+
+        $this->db->trans_complete(); // Akhiri transaksi
+
+        return $this->db->trans_status();
+    }
+
+    // Fungsi untuk menghitung jumlah kamar
+    function hitungNomorKamar($id_kamar)
+    {
+        $this->db->where('id_kamar', $id_kamar);
+        $this->db->from('tbnokamar');
+        return $this->db->count_all_results();
+    }
+
 }

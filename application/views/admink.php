@@ -161,7 +161,7 @@
                             <div class="form-group">
                                 <div class="form-wrapper">
                                     <label for="">Jumlah Kamar</label>
-                                    <input type="text" name="" disabled>
+                                    <input type="text" name="nomor_kamar" value="<?php echo $data->jumlah; ?>">
                                 </div>
                                 <div class="form-wrapper">
                                     <label for="foto1">Foto Kamar</label>
