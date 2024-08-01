@@ -135,7 +135,7 @@
                     <!-- Modal content -->
                     <div class="modal-content-delete">
                         <div class="title">
-                            <h1>Hapus Pengguna</h1>
+                            <h1>Hapus Layanan</h1>
                             <span class="closedlt" onclick="closeModalDelete(<?php echo $no; ?>)">&times;</span>
                         </div>
                         <form method='POST' action="<?= base_url('Clayanan/deletelayanan') ?>"> <!-- form -->
